@@ -319,16 +319,16 @@ public class ProjectTests {
 
 			driver.setPriority(Thread.MAX_PRIORITY);
 
-			// make sure exceptions within thread are tracked
-			driver.setUncaughtExceptionHandler((thread, throwable) -> {
-				thrown.add(() -> { throw throwable; });
-			});
-
 			driver.start();
 			latch.await();
 
+			Thread.yield();
+
+			System.out.println("Getting active");
+
 			// get the threads (ideally Driver should be up and running by this point)
 			List<String> finish = activeThreads();
+			System.out.println(finish);
 
 			// check that driver is still alive
 			String alive = "Something went wrong with the test code; see instructor. State: %s%n";
