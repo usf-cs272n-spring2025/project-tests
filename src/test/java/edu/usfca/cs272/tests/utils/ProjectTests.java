@@ -26,6 +26,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInfo;
@@ -48,6 +49,9 @@ public class ProjectTests {
 
 	/** Amount of time to wait for short-running tests to finish. */
 	public static final Duration SHORT_TIMEOUT = Duration.ofSeconds(30);
+
+	/** Stores failures from uncaught exceptions. */
+	public static final List<Executable> UNCAUGHT = Collections.synchronizedList(new ArrayList<>());
 
 	/**
 	 * Generates header for debugging output when an error occurs.
@@ -437,6 +441,21 @@ public class ProjectTests {
 		}
 		catch (IOException e) {
 			Assertions.fail("Unable to copy expected files for Windows systems.", e);
+		}
+
+		Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+			UNCAUGHT.add(() -> Assertions.fail("Thread " + thread.getName() + " threw an exception.", throwable));
+		});
+	}
+
+	/**
+	 * Makes sure there is a test failure if any thread threw an otherwise uncaught
+	 * exception.
+	 */
+	@AfterAll
+	public static void checkUncaught() {
+		if (!UNCAUGHT.isEmpty()) {
+			Assertions.assertAll("One or more threads threw an exception.", UNCAUGHT);
 		}
 	}
 
