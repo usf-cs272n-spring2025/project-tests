@@ -71,6 +71,36 @@ public class SearchExactTests extends ProjectTests {
 		@Test
 		@Order(1)
 		@Tag("test-v2.0")
+		public void testHelloHello() {
+			testOutput(partial, "hello", ProjectPath.HELLO);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(2)
+		@Tag("test-v2.0")
+		public void testHelloWorld() {
+			testOutput(partial, "world", ProjectPath.HELLO);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(3)
+		@Tag("test-v2.0")
+		public void testHelloHewo() {
+			testOutput(partial, "hewo", ProjectPath.HELLO);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(4)
+		@Tag("test-v2.0")
 		public void testSimpleSimple() {
 			testOutput(partial, "simple", ProjectPath.SIMPLE);
 		}
@@ -79,7 +109,7 @@ public class SearchExactTests extends ProjectTests {
 		 * See the JUnit output for test details.
 		 */
 		@Test
-		@Order(2)
+		@Order(5)
 		@Tag("test-v2.0")
 		public void testStemsWords() {
 			testOutput(partial, "words", ProjectPath.STEMS);
@@ -89,7 +119,7 @@ public class SearchExactTests extends ProjectTests {
 		 * See the JUnit output for test details.
 		 */
 		@Test
-		@Order(3)
+		@Order(6)
 		@Tag("test-v2.0")
 		public void testStemsRespect() {
 			testOutput(partial, "respect", ProjectPath.STEMS);
@@ -99,7 +129,7 @@ public class SearchExactTests extends ProjectTests {
 		 * See the JUnit output for test details.
 		 */
 		@Test
-		@Order(4)
+		@Order(7)
 		@Tag("test-v2.0")
 		public void testStemsLetters() {
 			testOutput(partial, "letters", ProjectPath.STEMS);
@@ -109,7 +139,7 @@ public class SearchExactTests extends ProjectTests {
 		 * See the JUnit output for test details.
 		 */
 		@Test
-		@Order(5)
+		@Order(8)
 		@Tag("test-v2.0")
 		public void testRfcsLetters() {
 			testOutput(partial, "letters", ProjectPath.RFCS);

@@ -1,0 +1,9 @@
+{
+  "hello": [
+    {
+      "count": 3,
+      "score": 0.50000000,
+      "where": "input/text/simple/hello.txt"
+    }
+  ]
+}

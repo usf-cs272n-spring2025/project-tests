@@ -44,33 +44,54 @@ public class SearchPartialTests extends SearchExactTests {
 		@Test
 		@Order(1)
 		@Override
+		public void testHelloHello() {
+			super.testHelloHello();
+		}
+
+		@Test
+		@Order(2)
+		@Override
+		public void testHelloWorld() {
+			super.testHelloWorld();
+		}
+
+		@Test
+		@Order(3)
+		@Override
+		public void testHelloHewo() {
+			super.testHelloHewo();
+		}
+
+		@Test
+		@Order(4)
+		@Override
 		public void testSimpleSimple() {
 			super.testSimpleSimple();
 		}
 
 		@Test
-		@Order(2)
+		@Order(5)
 		@Override
 		public void testStemsWords() {
 			super.testStemsWords();
 		}
 
 		@Test
-		@Order(3)
+		@Order(6)
 		@Override
 		public void testStemsRespect() {
 			super.testStemsRespect();
 		}
 
 		@Test
-		@Order(4)
+		@Order(7)
 		@Override
 		public void testStemsLetters() {
 			super.testStemsLetters();
 		}
 
 		@Test
-		@Order(5)
+		@Order(8)
 		@Override
 		public void testRfcsLetters() {
 			super.testRfcsLetters();

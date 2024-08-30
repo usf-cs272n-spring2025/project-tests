@@ -1,0 +1,23 @@
+{
+  "he wo": [
+    {
+      "count": 6,
+      "score": 1.00000000,
+      "where": "input/text/simple/hello.txt"
+    }
+  ],
+  "he world": [
+    {
+      "count": 6,
+      "score": 1.00000000,
+      "where": "input/text/simple/hello.txt"
+    }
+  ],
+  "hello wo": [
+    {
+      "count": 6,
+      "score": 1.00000000,
+      "where": "input/text/simple/hello.txt"
+    }
+  ]
+}
