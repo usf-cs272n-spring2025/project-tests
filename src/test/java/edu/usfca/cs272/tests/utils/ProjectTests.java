@@ -347,10 +347,7 @@ public class ProjectTests {
 		System.out.println(EXPECTED.text);
 		System.out.println();
 
-		Assertions.assertAll("Please check your working directory.",
-				() -> Assertions.assertTrue(Files.isDirectory(EXPECTED.path), fail("Unable to access: %s%n", EXPECTED.text)),
-				() -> Assertions.assertTrue(Files.isDirectory(TEXT.path), fail("Unable to access: %s%n", TEXT.text))
-		);
+		Assertions.assertTrue(Files.isDirectory(TEXT.path), fail("Unable to access: %s%n", TEXT.text));
 
 		try {
 			// create or clean up actual directory
@@ -376,6 +373,8 @@ public class ProjectTests {
 		catch (IOException e) {
 			Assertions.fail("Unable to copy expected files for Windows systems.", e);
 		}
+
+		Assertions.assertTrue(Files.isDirectory(EXPECTED.path), fail("Unable to access: %s%n", EXPECTED.text));
 
 		Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
 			UNCAUGHT.add(() -> Assertions.fail("Thread " + thread.getName() + " threw an exception.", throwable));
