@@ -25,6 +25,10 @@ import edu.usfca.cs272.tests.utils.ProjectPath;
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 public class SearchPartialTests extends SearchExactTests {
+	/** Creates a new instance of this class. */
+	public SearchPartialTests() {
+	}
+
 	/**
 	 * Sets up the tests before running.
 	 */
@@ -41,6 +45,10 @@ public class SearchPartialTests extends SearchExactTests {
 	@Tag("test-v2.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class InitialTests extends SearchExactTests.InitialTests {
+		/** Creates a new instance of this class. */
+		public InitialTests() {
+		}
+
 		@Test
 		@Order(1)
 		@Override
@@ -104,6 +112,9 @@ public class SearchPartialTests extends SearchExactTests {
 	@Tag("test-v2.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComplexTests extends SearchExactTests.ComplexTests {
+		/** Creates a new instance of this class. */
+		public ComplexTests() {}
+
 		@ParameterizedTest
 		@Order(1)
 		@EnumSource(mode = MATCH_ALL, names = "^GUTEN_.+")
@@ -157,6 +168,9 @@ public class SearchPartialTests extends SearchExactTests {
 	@Tag("past-v4")
 	@Tag("past-v5")
 	public class ExceptionTests extends SearchExactTests.ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		@Test
 		@Order(1)
 		@Override
@@ -217,6 +231,9 @@ public class SearchPartialTests extends SearchExactTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComboTests extends SearchExactTests.ComboTests {
+
+		/** Creates a new instance of this class. */
+		public ComboTests() {}
 
 	}
 }

@@ -47,6 +47,10 @@ public class SearchExactTests extends ProjectTests {
 	/** The search flag to add to the command-line arguments. */
 	public String searchFlag;
 
+	/** Creates a new instance of this class. */
+	public SearchExactTests() {
+	}
+
 	/**
 	 * Sets up the tests before running.
 	 */
@@ -65,6 +69,9 @@ public class SearchExactTests extends ProjectTests {
 	@Order(1)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class InitialTests {
+		/** Creates a new instance of this class. */
+		public InitialTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -153,6 +160,9 @@ public class SearchExactTests extends ProjectTests {
 	@Order(2)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComplexTests {
+		/** Creates a new instance of this class. */
+		public ComplexTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 *
@@ -229,6 +239,9 @@ public class SearchExactTests extends ProjectTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Tests no exceptions are thrown with the provided arguments.
 		 *
@@ -382,6 +395,9 @@ public class SearchExactTests extends ProjectTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComboTests {
+		/** Creates a new instance of this class. */
+		public ComboTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */

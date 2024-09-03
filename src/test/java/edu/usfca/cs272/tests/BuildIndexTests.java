@@ -39,6 +39,10 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 public class BuildIndexTests extends ProjectTests {
+	/** Creates a new instance of this class. */
+	public BuildIndexTests() {
+	}
+
 	/**
 	 * Tests the output of this project.
 	 */
@@ -47,6 +51,9 @@ public class BuildIndexTests extends ProjectTests {
 	@Tag("test-v1.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class FileTests {
+		/** Creates a new instance of this class. */
+		public FileTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 *
@@ -124,6 +131,9 @@ public class BuildIndexTests extends ProjectTests {
 	@Tag("test-v1.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class DirectoryTests {
+		/** Creates a new instance of this class. */
+		public DirectoryTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -188,6 +198,9 @@ public class BuildIndexTests extends ProjectTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Tests no exceptions are thrown with the provided arguments.
 		 *
@@ -284,6 +297,9 @@ public class BuildIndexTests extends ProjectTests {
 	@Tag("past-v2")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComboTests {
+		/** Creates a new instance of this class. */
+		public ComboTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */

@@ -31,6 +31,9 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 public class BuildCountTests extends ProjectTests {
+	/** Creates a new instance of this class. */
+	public BuildCountTests() {}
+
 	/**
 	 * Tests the output of this project.
 	 */
@@ -39,6 +42,9 @@ public class BuildCountTests extends ProjectTests {
 	@Tag("test-v1.0")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class FileTests {
+		/** Creates a new instance of this class. */
+		public FileTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -112,6 +118,9 @@ public class BuildCountTests extends ProjectTests {
 	@Tag("test-v1.0")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class DirectoryTests {
+		/** Creates a new instance of this class. */
+		public DirectoryTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -169,6 +178,9 @@ public class BuildCountTests extends ProjectTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Tests no exceptions are thrown with the provided arguments.
 		 */
