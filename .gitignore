@@ -4,6 +4,7 @@ actual/
 index.json
 results.json
 counts.json
+expected-win/
 
 # https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
 .metadata
