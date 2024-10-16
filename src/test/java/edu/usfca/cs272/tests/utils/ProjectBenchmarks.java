@@ -8,14 +8,20 @@ import java.io.StringWriter;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.config.Configurator;
+import org.junit.jupiter.api.Assertions;
 
 import edu.usfca.cs272.Driver;
-import edu.usfca.cs272.tests.ThreadBuildTests;
 
 /**
  * Utility methods used by other JUnit test classes.
@@ -47,13 +53,83 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final int TIMED_ROUNDS = GITHUB ? 6 : 10;
 
 	/** The default number of threads to use when benchmarking single versus multithreading. */
-	public static final ThreadBuildTests.Threads BENCH_MULTI = ThreadBuildTests.Threads.THREE;
+	public static final ProjectBenchmarks.Threads BENCH_MULTI = ProjectBenchmarks.Threads.THREE;
 
 	/** The default number of threads to use when benchmarking workers. */
-	public static final ThreadBuildTests.Threads BENCH_WORKERS = ThreadBuildTests.Threads.THREE;
+	public static final ProjectBenchmarks.Threads BENCH_WORKERS = ProjectBenchmarks.Threads.THREE;
 
 	/** Format string used for debug output. */
 	public static final String format = "%d workers has a %.2fx speedup (less than the %.1fx required) compared to %s.";
+
+	/**
+	 * Attempts to test that multiple threads are being used in this code.
+	 *
+	 * @param action the action to run
+	 */
+	public static void assertMultithreaded(Runnable action) {
+		Assertions.assertTimeoutPreemptively(ProjectTests.LONG_TIMEOUT, () -> {
+			Set<String> before = new HashSet<>(); // threads before
+			Set<String> after = new HashSet<>();  // threads after
+
+			CountDownLatch started = new CountDownLatch(1);  // driver started
+			CountDownLatch finished = new CountDownLatch(1); // driver finished
+
+			// setup thread to trigger latch when starts
+			Thread driver = new Thread(() -> {
+				// set before threads after this one has started
+				before.addAll(activeThreads());
+
+				// indicate the code should now continue
+				started.countDown();
+				action.run();
+				finished.countDown();
+			});
+
+			driver.setPriority(Thread.MAX_PRIORITY);
+
+			driver.start();
+			started.await();
+
+			// add current active threads
+			after.addAll(activeThreads());
+
+			// an intentional busy-wait loop (slow, but helps catch all possible worker threads)
+			while (!finished.await(200, TimeUnit.MILLISECONDS)) {
+				after.addAll(activeThreads());
+			}
+
+			// wait for driver to terminate (might already be at this state)
+			driver.join();
+
+			// try to figure out which ones are worker threads
+			Set<String> workers = new HashSet<>(after);
+			workers.removeAll(before); // remove threads running this code
+			workers.removeIf(name -> name.startsWith("junit")); // remove junit timeout threads
+			workers.removeIf(name -> name.startsWith("ForkJoinPool")); // remove other junit threads
+
+			System.out.println("Workers: " + workers);
+
+			String message = "Unable to detect any worker threads. Are you 100% positive threads are being created and used in your code? You can debug this by producing log output inside the run method of your thread objects. This is an imperfect test; if you are able to verify threads are being created and used, make a private post on the course forum. The instructor will look into the problem.";
+			String format = "\nThreads Before: %s\nThreads After: %s\nWorker Threads: %s\n\n%s\n\n";
+			Assertions.assertTrue(workers.size() > 0, ProjectTests.debug(format, before, after, workers, message));
+		});
+	}
+
+	/**
+	 * Returns the active thread names (approximate).
+	 *
+	 * @return the active thread names
+	 */
+	public static List<String> activeThreads() {
+		int active = Thread.activeCount(); // only an estimate
+		Thread[] threads = new Thread[active * 2]; // make sure large enough
+		Thread.enumerate(threads); // fill in active threads
+
+		return Arrays.stream(threads)
+				.filter(t -> t != null)
+				.map(Thread::getName)
+				.toList();
+	}
 
 	/**
 	 * Compares the runtime using two different sets of arguments. Outputs the
@@ -221,6 +297,33 @@ public class ProjectBenchmarks extends ProjectTests {
 		}
 
 		return runs;
+	}
+
+	/** The number of threads to use in testing. */
+	public static enum Threads {
+		/** One thread */
+		ONE(1),
+
+		/** Two threads */
+		TWO(2),
+
+		/** Three threads */
+		THREE(3);
+
+		/** The number of threads as an int. */
+		public final int num;
+
+		/** The number of threads as text. */
+		public final String text;
+
+		/**
+		 * Initializes this thread count.
+		 * @param num the number of threads
+		 */
+		private Threads(int num) {
+			this.num = num;
+			this.text = Integer.toString(num);
+		}
 	}
 
 	/** Creates a new instance of this class. */
