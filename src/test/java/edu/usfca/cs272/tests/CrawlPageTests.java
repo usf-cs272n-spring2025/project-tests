@@ -27,6 +27,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
 import edu.usfca.cs272.tests.utils.ProjectFlag;
 import edu.usfca.cs272.tests.utils.ProjectPath;
 import edu.usfca.cs272.tests.utils.ProjectTests;
@@ -39,7 +40,7 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  */
 @ExtendWith(ProjectTests.TestCounter.class)
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
-public class CrawlPageTests extends ProjectTests {
+public class CrawlPageTests extends ProjectBenchmarks {
 	// ███████╗████████╗ ██████╗ ██████╗
 	// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
 	// ███████╗   ██║   ██║   ██║██████╔╝
@@ -72,6 +73,7 @@ public class CrawlPageTests extends ProjectTests {
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
 			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
 		}
 
 		/**
@@ -125,14 +127,6 @@ public class CrawlPageTests extends ProjectTests {
 		public void testBirds(String subdir, String id, String seed) {
 			testIndex(seed, subdir, id);
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -150,6 +144,7 @@ public class CrawlPageTests extends ProjectTests {
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
 			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
 		}
 
 		/**
@@ -273,14 +268,6 @@ public class CrawlPageTests extends ProjectTests {
 		public void testJavaIndex(String subdir, String id, String seed) {
 			testPartial(seed, subdir, id, ProjectPath.QUERY_LETTERS);
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -302,6 +289,7 @@ public class CrawlPageTests extends ProjectTests {
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
 			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
 		}
 
 		/**
@@ -394,14 +382,6 @@ public class CrawlPageTests extends ProjectTests {
 		public void testFailedRedirect(String subdir, String id, String seed) {
 			testIndex(seed, subdir, id);
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -415,6 +395,14 @@ public class CrawlPageTests extends ProjectTests {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/**
+		 * Free up memory before running.
+		 */
+		@BeforeAll
+		public static void freeMemory() {
+			ProjectTests.freeMemory();
+		}
+
 		/**
 		 * Tests that exceptions are not thrown.
 		 *
@@ -534,14 +522,6 @@ public class CrawlPageTests extends ProjectTests {
 			Path actual = ProjectFlag.INDEX.path;
 			Path expected = ProjectPath.EXPECTED.resolve("crawl").resolve("simple").resolve("hello-index.json");
 			checkOutput(args(input), Map.of(actual, expected));
-		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
 		}
 	}
 

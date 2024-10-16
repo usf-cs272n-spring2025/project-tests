@@ -1,9 +1,5 @@
 package edu.usfca.cs272.tests;
 
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.BENCH_MULTI;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.BENCH_WORKERS;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.compare;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.format;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.COUNTS;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.INDEX;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.PARTIAL;
@@ -43,7 +39,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import edu.usfca.cs272.tests.ThreadBuildTests.Threads;
 import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
 import edu.usfca.cs272.tests.utils.ProjectPath;
 import edu.usfca.cs272.tests.utils.ProjectTests;
@@ -56,7 +51,7 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 @ExtendWith(ProjectTests.TestCounter.class)
-public class ThreadSearchTests extends ProjectTests {
+public class ThreadSearchTests extends ProjectBenchmarks {
 	/**
 	 * Tests that threads are being used for this project. These tests are slow and
 	 * should only be run when needed. The tests are also imperfect and may not
@@ -74,11 +69,11 @@ public class ThreadSearchTests extends ProjectTests {
 		@Order(1)
 		public void testExact() {
 			Runnable test = () -> {
-				new ExactTests().testTextComplex(Threads.TWO);
+				new ExactTests().testTextComplex(ProjectBenchmarks.Threads.TWO);
 				System.out.println("Random: " + Math.random());
 			};
 
-			ProjectTests.assertMultithreaded(test);
+			ProjectBenchmarks.assertMultithreaded(test);
 		}
 
 		/**
@@ -92,11 +87,11 @@ public class ThreadSearchTests extends ProjectTests {
 		@Tag("test-v3.4")
 		public void testPartial() {
 			Runnable test = () -> {
-				new PartialTests().testTextComplex(Threads.TWO);
+				new PartialTests().testTextComplex(ProjectBenchmarks.Threads.TWO);
 				System.out.println("Random: " + Math.random());
 			};
 
-			ProjectTests.assertMultithreaded(test);
+			ProjectBenchmarks.assertMultithreaded(test);
 		}
 	}
 
@@ -131,7 +126,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(1)
 		@EnumSource()
-		public void testSimple(Threads threads) {
+		public void testSimple(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "simple", ProjectPath.SIMPLE, threads);
 		}
 
@@ -143,7 +138,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(2)
 		@EnumSource()
-		public void testStems(Threads threads) {
+		public void testStems(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "words", ProjectPath.STEMS, threads);
 		}
 
@@ -155,7 +150,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(3)
 		@EnumSource()
-		public void testRfcs(Threads threads) {
+		public void testRfcs(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "letters", ProjectPath.RFCS, threads);
 		}
 
@@ -167,7 +162,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(4)
 		@EnumSource()
-		public void testGutenGreat(Threads threads) {
+		public void testGutenGreat(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "complex", ProjectPath.GUTEN_GREAT, threads);
 		}
 
@@ -179,7 +174,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(5)
 		@EnumSource()
-		public void testGuten(Threads threads) {
+		public void testGuten(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "complex", ProjectPath.GUTEN, threads);
 		}
 
@@ -191,7 +186,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(6)
 		@EnumSource()
-		public void testTextRespect(Threads threads) {
+		public void testTextRespect(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "respect", ProjectPath.TEXT, threads);
 		}
 
@@ -207,7 +202,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@Tag("test-v3.2")
 		@Tag("test-v3.3")
 		@Tag("test-v3.4")
-		public void testTextComplex(Threads threads) {
+		public void testTextComplex(ProjectBenchmarks.Threads threads) {
 			testSearch(partial, "complex", ProjectPath.TEXT, threads);
 		}
 
@@ -380,7 +375,8 @@ public class ThreadSearchTests extends ProjectTests {
 		public static double target;
 
 		/**
-		 * Only run if other tests had 0 failures.
+		 * Sets up the tests before running. Only runs the tests if other tests had
+		 * no failures.
 		 *
 		 * @param info test information
 		 */
@@ -396,15 +392,6 @@ public class ThreadSearchTests extends ProjectTests {
 			// disable if there were earlier failures
 			ProjectTests.TestCounter.assertNoFailures(info);
 		}
-
-//		/**
-//		 * Sets up the tests before running.
-//		 */
-//		@BeforeEach
-//		public void setup(TestInfo info) {
-//			target = ProjectBenchmarks.MIN_SPEEDUP;
-//			ProjectTests.TestCounter.assertNoFailures(info);
-//		}
 
 		/**
 		 * See the JUnit output for test details.
@@ -484,7 +471,7 @@ public class ThreadSearchTests extends ProjectTests {
 		@Order(1)
 		public void testCountsIndexResults(boolean partial) {
 			ProjectPath input = ProjectPath.TEXT;
-			Threads threads = Threads.TWO;
+			ProjectBenchmarks.Threads threads = ProjectBenchmarks.Threads.TWO;
 
 			String query = "complex";
 			String type = partial ? "partial" : "exact";
@@ -526,7 +513,7 @@ public class ThreadSearchTests extends ProjectTests {
 	 * @param input the input path to use
 	 * @param threads the threads
 	 */
-	public static void testSearch(boolean partial, String query, ProjectPath input, ThreadBuildTests.Threads threads) {
+	public static void testSearch(boolean partial, String query, ProjectPath input, ProjectBenchmarks.Threads threads) {
 		String type = partial ? "partial" : "exact";
 		String single = String.format("%s-%s-%s.json", type, query, input.id);
 		String threaded = String.format("%s-%s-%s-%s.json", type, query, input.id, threads.text);

@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
 import edu.usfca.cs272.tests.utils.ProjectFlag;
@@ -33,6 +34,7 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  * @author CS 272 Software Development (University of San Francisco)
  * @version Fall 2024
  */
+@ExtendWith(ProjectTests.TestCounter.class)
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 public class CrawlSiteTests extends ProjectBenchmarks {
 	// ███████╗████████╗ ██████╗ ██████╗
@@ -66,6 +68,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
 			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
 		}
 
 		/**
@@ -151,14 +154,6 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			ProjectPath query = ProjectPath.QUERY_LETTERS;
 			testPartial(seed, subdir, id, crawl, query, List.of(ProjectFlag.RESULTS));
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -176,6 +171,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
 			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
 		}
 
 		/**
@@ -272,14 +268,6 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			List<ProjectFlag> output = List.of(ProjectFlag.RESULTS);
 			testPartial(seed, subdir, id, crawl, query, output);
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -292,6 +280,17 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class SpecialTests {
+		/**
+		 * Only run if other tests had 0 failures.
+		 *
+		 * @param info test information
+		 */
+		@BeforeAll
+		public static void checkStatus(TestInfo info) {
+			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
+		}
+
 		/**
 		 * Tests the project output.
 		 */
@@ -333,14 +332,6 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			List<ProjectFlag> output = List.of(ProjectFlag.COUNTS, ProjectFlag.INDEX);
 			testCrawl(seed, subdir, id, crawl, output);
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -353,6 +344,14 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/**
+		 * Free up memory before running.
+		 */
+		@BeforeAll
+		public static void freeMemory() {
+			ProjectTests.freeMemory();
+		}
+
 		/**
 		 * Tests that exceptions are not thrown.
 		 *
@@ -449,14 +448,6 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 
 			CrawlPageTests.testCrawl(seed, subdir, id, config, Collections.emptyList());
 		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
-		}
 	}
 
 	/**
@@ -470,6 +461,17 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("time-v5.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class RuntimeTests {
+		/**
+		 * Only run if other tests had 0 failures.
+		 *
+		 * @param info test information
+		 */
+		@BeforeAll
+		public static void checkStatus(TestInfo info) {
+			ProjectTests.TestCounter.assertNoFailures(info);
+			ProjectTests.freeMemory();
+		}
+
 		/**
 		 * Tests build speedup.
 		 */
@@ -546,14 +548,6 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 				Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
 				assertTrue(result >= target, debug);
 			});
-		}
-
-		/**
-		 * Free up memory before running.
-		 */
-		@BeforeAll
-		public static void freeMemory() {
-			ProjectTests.freeMemory();
 		}
 	}
 

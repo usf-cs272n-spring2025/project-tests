@@ -1,9 +1,5 @@
 package edu.usfca.cs272.tests;
 
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.BENCH_MULTI;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.BENCH_WORKERS;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.compare;
-import static edu.usfca.cs272.tests.utils.ProjectBenchmarks.format;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.COUNTS;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.INDEX;
 import static edu.usfca.cs272.tests.utils.ProjectFlag.TEXT;
@@ -21,7 +17,7 @@ import java.util.function.Supplier;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.ClassOrderer;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Nested;
@@ -29,7 +25,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -45,7 +43,8 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  * @version Fall 2024
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
-public class ThreadBuildTests extends ProjectTests {
+@ExtendWith(ProjectTests.TestCounter.class)
+public class ThreadBuildTests extends ProjectBenchmarks {
 	/**
 	 * Tests that threads are being used for this project. These tests are slow and
 	 * should only be run when needed. The tests are also imperfect and may not
@@ -66,11 +65,11 @@ public class ThreadBuildTests extends ProjectTests {
 		@Order(1)
 		public void testIndex() {
 			Runnable test = () -> {
-				new ComplexTests().testTextIndex(Threads.TWO);
+				new ComplexTests().testTextIndex(ProjectBenchmarks.Threads.TWO);
 				System.out.println("Random: " + Math.random());
 			};
 
-			ProjectTests.assertMultithreaded(test);
+			ProjectBenchmarks.assertMultithreaded(test);
 		}
 
 		/**
@@ -80,11 +79,11 @@ public class ThreadBuildTests extends ProjectTests {
 		@Order(2)
 		public void testCount() {
 			Runnable test = () -> {
-				new ComplexTests().testTextCounts(Threads.TWO);
+				new ComplexTests().testTextCounts(ProjectBenchmarks.Threads.TWO);
 				System.out.println("Random: " + Math.random());
 			};
 
-			ProjectTests.assertMultithreaded(test);
+			ProjectBenchmarks.assertMultithreaded(test);
 		}
 	}
 
@@ -104,7 +103,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(1)
 		@EnumSource()
-		public void testHello(Threads threads) {
+		public void testHello(ProjectBenchmarks.Threads threads) {
 			testIndex("simple", ProjectPath.HELLO, threads);
 		}
 
@@ -116,7 +115,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(2)
 		@EnumSource()
-		public void testSimpleIndex(Threads threads) {
+		public void testSimpleIndex(ProjectBenchmarks.Threads threads) {
 			testIndex("simple", ProjectPath.SIMPLE, threads);
 		}
 
@@ -128,7 +127,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(3)
 		@EnumSource()
-		public void testSimpleCounts(Threads threads) {
+		public void testSimpleCounts(ProjectBenchmarks.Threads threads) {
 			testCount(ProjectPath.SIMPLE, threads);
 		}
 
@@ -140,7 +139,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(4)
 		@EnumSource()
-		public void testStems(Threads threads) {
+		public void testStems(ProjectBenchmarks.Threads threads) {
 			testIndex("stems", ProjectPath.STEMS, threads);
 		}
 
@@ -152,7 +151,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(5)
 		@EnumSource()
-		public void testRFCs(Threads threads) {
+		public void testRFCs(ProjectBenchmarks.Threads threads) {
 			testIndex("rfcs", ProjectPath.RFCS, threads);
 		}
 
@@ -164,7 +163,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(6)
 		@EnumSource()
-		public void testGutenGreat(Threads threads) {
+		public void testGutenGreat(ProjectBenchmarks.Threads threads) {
 			testIndex("guten", ProjectPath.GUTEN_GREAT, threads);
 		}
 
@@ -196,7 +195,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(1)
 		@EnumSource()
-		public void testTextIndex(Threads threads) {
+		public void testTextIndex(ProjectBenchmarks.Threads threads) {
 			testIndex(".", ProjectPath.TEXT, threads);
 		}
 
@@ -208,7 +207,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@ParameterizedTest
 		@Order(2)
 		@EnumSource()
-		public void testTextCounts(Threads threads) {
+		public void testTextCounts(ProjectBenchmarks.Threads threads) {
 			testCount(ProjectPath.TEXT, threads);
 		}
 
@@ -357,14 +356,25 @@ public class ThreadBuildTests extends ProjectTests {
 	@Tag("time-v3.4")
 	public class ThreadTests {
 		/** The target speedup to pass these tests. */
-		public double target;
+		public static double target;
 
 		/**
-		 * Sets up the tests before running.
+		 * Sets up the tests before running. Only runs the tests if other tests had
+		 * no failures.
+		 *
+		 * @param info test information
 		 */
-		@BeforeEach
-		public void setup() {
-			target = ProjectBenchmarks.MIN_SPEEDUP;
+		@BeforeAll
+		public static void checkStatus(TestInfo info) {
+			var tags = info.getTags();
+
+			// set speedup based on tag
+			target = tags.contains("time-v3.4") ?
+					ProjectBenchmarks.MED_SPEEDUP :
+					ProjectBenchmarks.MIN_SPEEDUP;
+
+			// disable if there were earlier failures
+			ProjectTests.TestCounter.assertNoFailures(info);
 		}
 
 		/**
@@ -426,7 +436,7 @@ public class ThreadBuildTests extends ProjectTests {
 		@Order(1)
 		public void testCountsIndex() {
 			ProjectPath input = ProjectPath.TEXT;
-			Threads threads = Threads.TWO;
+			ProjectBenchmarks.Threads threads = ProjectBenchmarks.Threads.TWO;
 
 			String indexName = String.format("index-%s", input.id);
 			String countsName = String.format("counts-%s", input.id);
@@ -451,33 +461,6 @@ public class ThreadBuildTests extends ProjectTests {
 		}
 	}
 
-	/** The number of threads to use in testing. */
-	public static enum Threads {
-		/** One thread */
-		ONE(1),
-
-		/** Two threads */
-		TWO(2),
-
-		/** Three threads */
-		THREE(3);
-
-		/** The number of threads as an int. */
-		public final int num;
-
-		/** The number of threads as text. */
-		public final String text;
-
-		/**
-		 * Initializes this thread count.
-		 * @param num the number of threads
-		 */
-		private Threads(int num) {
-			this.num = num;
-			this.text = Integer.toString(num);
-		}
-	}
-
 	/**
 	 * Generates the arguments to use for the output test cases. Designed to be used
 	 * inside a JUnit test.
@@ -487,7 +470,7 @@ public class ThreadBuildTests extends ProjectTests {
 	 * @param id the id
 	 * @param threads the threads
 	 */
-	public static void testIndex(String subdir, Path input, String id, Threads threads) {
+	public static void testIndex(String subdir, Path input, String id, ProjectBenchmarks.Threads threads) {
 		String single = String.format("index-%s.json", id);
 		String threaded = String.format("index-%s-%s.json", id, threads.text);
 		Path actual = ACTUAL.resolve(threaded).normalize();
@@ -505,7 +488,7 @@ public class ThreadBuildTests extends ProjectTests {
 	 * @param threads the threads
 	 * @see ThreadBuildTests#testIndex(String, Path, String, Threads)
 	 */
-	public static void testIndex(String subdir, ProjectPath path, Threads threads) {
+	public static void testIndex(String subdir, ProjectPath path, ProjectBenchmarks.Threads threads) {
 		testIndex(subdir, path.path, path.id, threads);
 	}
 
@@ -517,7 +500,7 @@ public class ThreadBuildTests extends ProjectTests {
 	 * @param id the id
 	 * @param threads the threads
 	 */
-	public static void testCount(Path input, String id, Threads threads) {
+	public static void testCount(Path input, String id, ProjectBenchmarks.Threads threads) {
 		String single = String.format("counts-%s.json", id);
 		String threaded = String.format("counts-%s-%s.json", id, threads.text);
 		Path actual = ACTUAL.resolve(threaded).normalize();
@@ -534,7 +517,7 @@ public class ThreadBuildTests extends ProjectTests {
 	 * @param threads the threads
 	 * @see ThreadBuildTests#testCount(Path, String, Threads)
 	 */
-	public static void testCount(ProjectPath path, Threads threads) {
+	public static void testCount(ProjectPath path, ProjectBenchmarks.Threads threads) {
 		testCount(path.path, path.id, threads);
 	}
 }
