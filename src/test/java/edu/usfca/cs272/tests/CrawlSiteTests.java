@@ -22,7 +22,6 @@ import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import edu.usfca.cs272.tests.ThreadBuildTests.Threads;
 import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
 import edu.usfca.cs272.tests.utils.ProjectFlag;
 import edu.usfca.cs272.tests.utils.ProjectPath;
@@ -486,7 +485,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 
 			config1.put(ProjectFlag.HTML, uri.toString());
 			config1.put(ProjectFlag.MAX, Integer.toString(crawl));
-			config1.put(ProjectFlag.THREADS, Threads.ONE.text);
+			config1.put(ProjectFlag.THREADS, ProjectBenchmarks.Threads.ONE.text);
 
 			config2.putAll(config1);
 			config2.put(ProjectFlag.THREADS, BENCH_WORKERS.text);
@@ -526,7 +525,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			config1.put(ProjectFlag.MAX, Integer.toString(crawl));
 			config1.put(ProjectFlag.QUERY, ProjectPath.QUERY_LETTERS.text);
 			config1.put(ProjectFlag.PARTIAL, null);
-			config1.put(ProjectFlag.THREADS, Threads.ONE.text);
+			config1.put(ProjectFlag.THREADS, ProjectBenchmarks.Threads.ONE.text);
 
 			config2.putAll(config1);
 			config2.put(ProjectFlag.THREADS, BENCH_WORKERS.text);
