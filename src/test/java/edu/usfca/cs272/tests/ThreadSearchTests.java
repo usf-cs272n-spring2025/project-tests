@@ -26,6 +26,7 @@ import java.util.function.Supplier;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.ClassOrderer;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -34,7 +35,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -52,6 +55,7 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
  * @version Fall 2024
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
+@ExtendWith(ProjectTests.TestCounter.class)
 public class ThreadSearchTests extends ProjectTests {
 	/**
 	 * Tests that threads are being used for this project. These tests are slow and
@@ -364,7 +368,7 @@ public class ThreadSearchTests extends ProjectTests {
 	 * THESE ARE SLOW TESTS. AVOID RUNNING UNLESS REALLY NEEDED.
 	 */
 	@Nested
-	@Order(2)
+	@Order(4)
 	@TestMethodOrder(OrderAnnotation.class)
 	@Tag("time-v3.0")
 	@Tag("time-v3.1")
@@ -373,16 +377,34 @@ public class ThreadSearchTests extends ProjectTests {
 	@Tag("time-v3.4")
 	public class ThreadTests {
 		/** The target speedup to pass these tests. */
-		public double target;
+		public static double target;
 
 		/**
-		 * Sets up the tests before running.
+		 * Only run if other tests had 0 failures.
+		 *
+		 * @param info test information
 		 */
-		@BeforeEach
-		public void setup() {
-			target = ProjectBenchmarks.MIN_SPEEDUP;
+		@BeforeAll
+		public static void checkStatus(TestInfo info) {
+			var tags = info.getTags();
+
+			// set speedup based on tag
+			target = tags.contains("time-v3.4") ?
+					ProjectBenchmarks.MED_SPEEDUP :
+					ProjectBenchmarks.MIN_SPEEDUP;
+
+			// disable if there were earlier failures
+			ProjectTests.TestCounter.assertNoFailures(info);
 		}
 
+//		/**
+//		 * Sets up the tests before running.
+//		 */
+//		@BeforeEach
+//		public void setup(TestInfo info) {
+//			target = ProjectBenchmarks.MIN_SPEEDUP;
+//			ProjectTests.TestCounter.assertNoFailures(info);
+//		}
 
 		/**
 		 * See the JUnit output for test details.
