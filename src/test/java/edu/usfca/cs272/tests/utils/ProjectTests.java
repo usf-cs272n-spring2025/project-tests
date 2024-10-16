@@ -315,6 +315,7 @@ public class ProjectTests {
 			Thread driver = new Thread(() -> {
 				latch.countDown();
 				action.run();
+				System.out.println("done");
 			});
 
 			driver.setPriority(Thread.MAX_PRIORITY);
@@ -322,13 +323,23 @@ public class ProjectTests {
 			driver.start();
 			latch.await();
 
-			Thread.yield();
+			System.out.println(driver.isAlive());
 
-			System.out.println("Getting active");
+			int tries = 10;
+			List<String> finish = activeThreads();
+			System.out.println("Active: " + finish);
+
+			while (driver.isAlive() && finish.equals(before)) {
+				finish = activeThreads();
+				System.out.println("Active: " + finish);
+				Thread.onSpinWait();
+			}
+
+//			Thread.sleep(Duration.ofMillis(1000));
 
 			// get the threads (ideally Driver should be up and running by this point)
-			List<String> finish = activeThreads();
-			System.out.println(finish);
+//			List<String> finish = activeThreads();
+			System.out.println("Final Active: " + finish);
 
 			// check that driver is still alive
 			String alive = "Something went wrong with the test code; see instructor. State: %s%n";
