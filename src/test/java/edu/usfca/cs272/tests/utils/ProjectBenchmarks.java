@@ -34,6 +34,9 @@ public class ProjectBenchmarks extends ProjectTests {
 	/** Speedup required for slow tests. */
 	public static final double MIN_SPEEDUP = 1.1;
 
+	/** Speedup required for moderate tests. */
+	public static final double MED_SPEEDUP = 1.5;
+
 	/** Speedup required for crawl tests. */
 	public static final double CRAWL_SPEEDUP = 1.8;
 
