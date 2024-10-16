@@ -19,6 +19,7 @@ import edu.usfca.cs272.tests.CrawlSiteTests;
 import edu.usfca.cs272.tests.SearchExactTests;
 import edu.usfca.cs272.tests.SearchPartialTests;
 import edu.usfca.cs272.tests.ThreadBuildTests;
+import edu.usfca.cs272.tests.ThreadSearchTests;
 
 /**
  * Tests that next project code is not in the current project. This class should
@@ -79,7 +80,18 @@ public class ProjectNextTests {
 	@Tag("next-v2.3")
 	@Tag("next-v2.4")
 	public void testThreadIndexOutput() throws IOException {
-		runJUnitTest(ThreadBuildTests.ApproachTests.class, "testIndex");
+		runJUnitTest(ThreadSearchTests.ApproachTests.class, "testExact");
+	}
+
+	/**
+	 * Tests that next project functionality is not present.
+	 *
+	 * @throws IOException if an IO error occurs
+	 */
+	@Test
+	@Tag("next-v3.0")
+	public void testThreadSpeedup() throws IOException {
+		runJUnitTest(ThreadBuildTests.ThreadTests.class, "testIndexSingleMulti");
 	}
 
 	/**
