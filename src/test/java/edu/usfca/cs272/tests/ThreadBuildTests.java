@@ -445,8 +445,6 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
 				double result = compare("Build", "Single", args1, BENCH_MULTI.text + " Workers", args2);
 				Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
-				System.out.println(result);
-				System.out.println(target);
 				assertTrue(result >= target, debug);
 			});
 		}
