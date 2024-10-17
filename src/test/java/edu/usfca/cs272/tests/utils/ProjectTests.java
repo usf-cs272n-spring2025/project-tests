@@ -570,18 +570,6 @@ public class ProjectTests {
 	}
 
 	/**
-	 * Returns a list of the active thread names (approximate).
-	 *
-	 * @return list of active thread names
-	 */
-	public static List<String> activeThreads() {
-		int active = Thread.activeCount(); // only an estimate
-		Thread[] threads = new Thread[active * 2]; // make sure large enough
-		Thread.enumerate(threads); // fill in active threads
-		return Arrays.stream(threads).filter(t -> t != null).map(Thread::getName).toList();
-	}
-
-	/**
 	 * Counts the number of failed tests so far. Used to prevent tests from running
 	 * if there are any previous failures.
 	 */
