@@ -365,15 +365,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	@Nested
 	@Order(4)
 	@TestMethodOrder(OrderAnnotation.class)
-	@Tag("time-v3.0")
-	@Tag("time-v3.1")
-	@Tag("time-v3.2")
-	@Tag("time-v3.3")
-	@Tag("time-v3.4")
 	public class ThreadTests {
-		/** The target speedup to pass these tests. */
-		public static double target;
-
 		/**
 		 * Sets up the tests before running. Only runs the tests if other tests had
 		 * no failures.
@@ -382,13 +374,6 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		 */
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
-			var tags = info.getTags();
-
-			// set speedup based on tag
-			target = tags.contains("time-v3.4") ?
-					ProjectBenchmarks.MED_SPEEDUP :
-					ProjectBenchmarks.MIN_SPEEDUP;
-
 			// disable if there were earlier failures
 			ProjectTests.TestCounter.assertNoFailures(info);
 		}
@@ -398,7 +383,58 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		public void testSearchOneMany() {
+		@Tag("time-v3.0")
+		@Tag("time-v3.1")
+		@Tag("time-v3.2")
+		public void slowSearchOneMany() {
+			timeSearchOneMany(MIN_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(2)
+		@Tag("time-v3.0")
+		@Tag("time-v3.1")
+		@Tag("time-v3.2")
+		public void slowSearchSingleMulti() {
+			timeSearchSingleMulti(MIN_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(3)
+		@Tag("time-v3.3")
+		@Tag("time-v3.4")
+		public void fastSearchOneMany() {
+			timeSearchOneMany(MED_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(4)
+		@Tag("time-v3.3")
+		@Tag("time-v3.4")
+		@Tag("time-v4.0")
+		@Tag("time-v4.1")
+		@Tag("time-v4.2")
+		@Tag("time-v5.0")
+		@Tag("time-v5.1")
+		public void fastSearchSingleMulti() {
+			timeSearchSingleMulti(MED_SPEEDUP);
+		}
+
+		/**
+		 * Time building with 1 versus many workers.
+		 *
+		 * @param target the target speedup to pass these tests
+		 */
+		public void timeSearchOneMany(double target) {
 			String[] args1 = {
 					TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
 					PARTIAL.flag, THREADS.flag, String.valueOf(1)
@@ -422,16 +458,11 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		}
 
 		/**
-		 * See the JUnit output for test details.
+		 * Time searching with single versus threading.
+		 *
+		 * @param target the target speedup to pass these tests
 		 */
-		@Test
-		@Order(2)
-		@Tag("time-v4.0")
-		@Tag("time-v4.1")
-		@Tag("time-v4.2")
-		@Tag("time-v5.0")
-		@Tag("time-v5.1")
-		public void testSearchSingleMulti() {
+		public void timeSearchSingleMulti(double target) {
 			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text, PARTIAL.flag };
 
 			String[] args2 = {

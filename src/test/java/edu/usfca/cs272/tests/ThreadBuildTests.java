@@ -350,14 +350,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Nested
 	@Order(2)
 	@TestMethodOrder(OrderAnnotation.class)
-	@Tag("time-v3.1")
-	@Tag("time-v3.2")
-	@Tag("time-v3.3")
-	@Tag("time-v3.4")
 	public class ThreadTests {
-		/** The target speedup to pass these tests. */
-		public static double target;
-
 		/**
 		 * Sets up the tests before running. Only runs the tests if other tests had
 		 * no failures.
@@ -366,13 +359,6 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		 */
 		@BeforeAll
 		public static void checkStatus(TestInfo info) {
-			var tags = info.getTags();
-
-			// set speedup based on tag
-			target = tags.contains("time-v3.4") ?
-					ProjectBenchmarks.MED_SPEEDUP :
-					ProjectBenchmarks.MIN_SPEEDUP;
-
 			// disable if there were earlier failures
 			ProjectTests.TestCounter.assertNoFailures(info);
 		}
@@ -382,7 +368,51 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		public void testIndexOneMany() {
+		@Tag("time-v3.1")
+		@Tag("time-v3.2")
+		public void slowIndexOneMany() {
+			timeIndexOneMany(MIN_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(2)
+		@Tag("time-v3.1")
+		@Tag("time-v3.2")
+		public void slowIndexSingleMulti() {
+			timeIndexSingleMulti(MIN_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(3)
+		@Tag("time-v3.3")
+		@Tag("time-v3.4")
+		public void fastIndexOneMany() {
+			timeIndexOneMany(MED_SPEEDUP);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(4)
+		@Tag("time-v3.3")
+		@Tag("time-v3.4")
+		public void fastIndexSingleMulti() {
+			timeIndexSingleMulti(MED_SPEEDUP);
+		}
+
+		/**
+		 * Time building with 1 versus many workers.
+		 *
+		 * @param target the target speedup to pass these tests
+		 */
+		public static void timeIndexOneMany(double target) {
 			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(1) };
 			String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_WORKERS.text };
 
@@ -399,11 +429,11 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		}
 
 		/**
-		 * See the JUnit output for test details.
+		 * Time building with single versus threading.
+		 *
+		 * @param target the target speedup to pass these tests
 		 */
-		@Test
-		@Order(2)
-		public void testIndexSingleMulti() {
+		public static void timeIndexSingleMulti(double target) {
 			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text };
 			String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_MULTI.text };
 
@@ -415,9 +445,12 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
 				double result = compare("Build", "Single", args1, BENCH_MULTI.text + " Workers", args2);
 				Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
+				System.out.println(result);
+				System.out.println(target);
 				assertTrue(result >= target, debug);
 			});
 		}
+
 	}
 
 	/**
