@@ -14,6 +14,8 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 
 import edu.usfca.cs272.tests.BuildIndexTests;
+import edu.usfca.cs272.tests.CrawlPageTests;
+import edu.usfca.cs272.tests.CrawlSiteTests;
 import edu.usfca.cs272.tests.SearchExactTests;
 import edu.usfca.cs272.tests.SearchPartialTests;
 import edu.usfca.cs272.tests.ThreadBuildTests;
@@ -104,7 +106,7 @@ public class ProjectNextTests {
 	@Tag("next-v3.3")
 	@Tag("next-v3.4")
 	public void testCrawlPageIndexOutput() throws IOException {
-		// runJUnitTest(CrawlPageTests.InitialTests.class, "testHello");
+		runJUnitTest(CrawlPageTests.InitialTests.class, "testHello");
 	}
 
 	/**
@@ -115,7 +117,7 @@ public class ProjectNextTests {
 	@Test
 	@Tag("next-v4.0")
 	public void testCrawlSiteCountOutput() throws IOException {
-		// runJUnitTest(CrawlSiteTests.InitialTests.class, "testSimpleCounts");
+		runJUnitTest(CrawlSiteTests.InitialTests.class, "testSimpleCounts");
 	}
 
 	/**
