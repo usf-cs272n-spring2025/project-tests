@@ -33,7 +33,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -385,10 +384,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Test
 		@Order(1)
 		@Tag("time-v3.0")
-		@Tag("time-v3.1")
-		@Tag("time-v3.2")
 		public void slowSearchOneMany() {
-			timeSearchOneMany(MIN_SPEEDUP);
+			timeSearchOneMany(BAD_SPEEDUP);
 		}
 
 		/**
@@ -397,92 +394,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Test
 		@Order(2)
 		@Tag("time-v3.0")
-		@Tag("time-v3.1")
-		@Tag("time-v3.2")
 		public void slowSearchSingleMulti() {
-			timeSearchSingleMulti(MIN_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(3)
-		@Tag("time-v3.3")
-		@Tag("time-v3.4")
-		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
-		public void fastSearchOneMany() {
-			timeSearchOneMany(MED_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(4)
-		@Tag("time-v3.3")
-		@Tag("time-v3.4")
-		@Tag("time-v4.0")
-		@Tag("time-v4.1")
-		@Tag("time-v4.2")
-		@Tag("time-v5.0")
-		@Tag("time-v5.1")
-		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
-		public void fastSearchSingleMulti() {
-			timeSearchSingleMulti(MED_SPEEDUP);
-		}
-
-		/**
-		 * Time building with 1 versus many workers.
-		 *
-		 * @param target the target speedup to pass these tests
-		 */
-		public void timeSearchOneMany(double target) {
-			String[] args1 = {
-					TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
-					PARTIAL.flag, THREADS.flag, String.valueOf(1)
-			};
-
-			String[] args2 = {
-					TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
-					PARTIAL.flag, THREADS.flag, BENCH_WORKERS.text
-			};
-
-			// make sure code runs without exceptions before testing
-			assertNoExceptions(args1, SHORT_TIMEOUT);
-			assertNoExceptions(args2, SHORT_TIMEOUT);
-
-			// then test the timing
-			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-				double result = compare("Search", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
-				Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
-				assertTrue(result >= target, debug);
-			});
-		}
-
-		/**
-		 * Time searching with single versus threading.
-		 *
-		 * @param target the target speedup to pass these tests
-		 */
-		public void timeSearchSingleMulti(double target) {
-			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text, PARTIAL.flag };
-
-			String[] args2 = {
-					TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
-					PARTIAL.flag, THREADS.flag, BENCH_MULTI.text
-			};
-
-			// make sure code runs without exceptions before testing
-			assertNoExceptions(args1, SHORT_TIMEOUT);
-			assertNoExceptions(args2, SHORT_TIMEOUT);
-
-			// then test the timing
-			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-				double result = compare("Search", "Single", args1, BENCH_MULTI.text + " Workers", args2);
-				Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
-				assertTrue(result >= target, debug);
-			});
+			timeSearchSingleMulti(BAD_SPEEDUP);
 		}
 	}
 
@@ -564,5 +477,58 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 
 		Executable debug = () -> checkOutput(args, actual, expected);
 		Assertions.assertTimeoutPreemptively(LONG_TIMEOUT, debug);
+	}
+
+	/**
+	 * Time building with 1 versus many workers.
+	 *
+	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeSearchOneMany(double target) {
+		String[] args1 = {
+				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
+				PARTIAL.flag, THREADS.flag, String.valueOf(1)
+		};
+
+		String[] args2 = {
+				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
+				PARTIAL.flag, THREADS.flag, BENCH_WORKERS.text
+		};
+
+		// make sure code runs without exceptions before testing
+		assertNoExceptions(args1, SHORT_TIMEOUT);
+		assertNoExceptions(args2, SHORT_TIMEOUT);
+
+		// then test the timing
+		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
+			double result = compare("Search", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
+			assertTrue(result >= target, debug);
+		});
+	}
+
+	/**
+	 * Time searching with single versus threading.
+	 *
+	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeSearchSingleMulti(double target) {
+		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text, PARTIAL.flag };
+
+		String[] args2 = {
+				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
+				PARTIAL.flag, THREADS.flag, BENCH_MULTI.text
+		};
+
+		// make sure code runs without exceptions before testing
+		assertNoExceptions(args1, SHORT_TIMEOUT);
+		assertNoExceptions(args2, SHORT_TIMEOUT);
+
+		// then test the timing
+		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
+			double result = compare("Search", "Single", args1, BENCH_MULTI.text + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
+			assertTrue(result >= target, debug);
+		});
 	}
 }

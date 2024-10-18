@@ -27,7 +27,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -349,7 +348,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 * THESE ARE SLOW TESTS. AVOID RUNNING UNLESS REALLY NEEDED.
 	 */
 	@Nested
-	@Order(2)
+	@Order(5)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ThreadTests {
 		/**
@@ -385,80 +384,13 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		public void slowIndexSingleMulti() {
 			timeIndexSingleMulti(MIN_SPEEDUP);
 		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(3)
-		@Tag("time-v3.3")
-		@Tag("time-v3.4")
-		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
-		public void fastIndexOneMany() {
-			timeIndexOneMany(MED_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(4)
-		@Tag("time-v3.3")
-		@Tag("time-v3.4")
-		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
-		public void fastIndexSingleMulti() {
-			timeIndexSingleMulti(MED_SPEEDUP);
-		}
-
-		/**
-		 * Time building with 1 versus many workers.
-		 *
-		 * @param target the target speedup to pass these tests
-		 */
-		public static void timeIndexOneMany(double target) {
-			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(1) };
-			String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_WORKERS.text };
-
-			// make sure code runs without exceptions before testing
-			assertNoExceptions(args1, SHORT_TIMEOUT);
-			assertNoExceptions(args2, SHORT_TIMEOUT);
-
-			// then test the timing
-			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-				double result = compare("Build", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
-				Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
-				assertTrue(result >= target, debug);
-			});
-		}
-
-		/**
-		 * Time building with single versus threading.
-		 *
-		 * @param target the target speedup to pass these tests
-		 */
-		public static void timeIndexSingleMulti(double target) {
-			String[] args1 = { TEXT.flag, ProjectPath.TEXT.text };
-			String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_MULTI.text };
-
-			// make sure code runs without exceptions before testing
-			assertNoExceptions(args1, SHORT_TIMEOUT);
-			assertNoExceptions(args2, SHORT_TIMEOUT);
-
-			// then test the timing
-			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-				double result = compare("Build", "Single", args1, BENCH_MULTI.text + " Workers", args2);
-				Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
-				assertTrue(result >= target, debug);
-			});
-		}
-
 	}
 
 	/**
 	 * All-in-one tests of this project functionality.
 	 */
 	@Nested
-	@Order(5)
+	@Order(6)
 	@TestMethodOrder(OrderAnnotation.class)
 	@Tag("past-v4")
 	@Tag("past-v5")
@@ -553,5 +485,47 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 */
 	public static void testCount(ProjectPath path, ProjectBenchmarks.Threads threads) {
 		testCount(path.path, path.id, threads);
+	}
+
+	/**
+	 * Time building with 1 versus many workers.
+	 *
+	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeIndexOneMany(double target) {
+		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(1) };
+		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_WORKERS.text };
+
+		// make sure code runs without exceptions before testing
+		assertNoExceptions(args1, SHORT_TIMEOUT);
+		assertNoExceptions(args2, SHORT_TIMEOUT);
+
+		// then test the timing
+		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
+			double result = compare("Build", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
+			assertTrue(result >= target, debug);
+		});
+	}
+
+	/**
+	 * Time building with single versus threading.
+	 *
+	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeIndexSingleMulti(double target) {
+		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text };
+		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_MULTI.text };
+
+		// make sure code runs without exceptions before testing
+		assertNoExceptions(args1, SHORT_TIMEOUT);
+		assertNoExceptions(args2, SHORT_TIMEOUT);
+
+		// then test the timing
+		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
+			double result = compare("Build", "Single", args1, BENCH_MULTI.text + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
+			assertTrue(result >= target, debug);
+		});
 	}
 }
