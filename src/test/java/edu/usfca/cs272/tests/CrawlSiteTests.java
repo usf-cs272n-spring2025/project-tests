@@ -500,7 +500,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			assertNoExceptions(args1, SHORT_TIMEOUT);
 			assertNoExceptions(args2, SHORT_TIMEOUT);
 
-			double target = CRAWL_SPEEDUP;
+			double target = MAX_SPEEDUP;
 
 			// then test the timing
 			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
@@ -540,7 +540,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			assertNoExceptions(args1, SHORT_TIMEOUT);
 			assertNoExceptions(args2, SHORT_TIMEOUT);
 
-			double target = CRAWL_SPEEDUP;
+			double target = MAX_SPEEDUP;
 
 			// then test the timing
 			assertTimeoutPreemptively(LONG_TIMEOUT, () -> {

@@ -37,14 +37,17 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final boolean GITHUB = Boolean.parseBoolean(ENV.get("CI"))
 			&& Boolean.parseBoolean(ENV.get("GITHUB_ACTIONS"));
 
-	/** Speedup required for slow tests. */
+	/** Slower or poor speedup cutoff. */
+	public static final double BAD_SPEEDUP = 0.9;
+
+	/** Minimum speedup cutoff. */
 	public static final double MIN_SPEEDUP = 1.1;
 
-	/** Speedup required for moderate tests. */
-	public static final double MED_SPEEDUP = 1.5;
+	/** Moderate speedup cutoff. */
+	public static final double MOD_SPEEDUP = 1.5;
 
-	/** Speedup required for crawl tests. */
-	public static final double CRAWL_SPEEDUP = 1.8;
+	/** Maximum speedup cutoff. */
+	public static final double MAX_SPEEDUP = 2.0;
 
 	/** The number of warmup runs when benchmarking. */
 	public static final int WARMUP_ROUNDS = GITHUB ? 2 : 5;
