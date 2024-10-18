@@ -33,6 +33,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -409,6 +410,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Order(3)
 		@Tag("time-v3.3")
 		@Tag("time-v3.4")
+		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
 		public void fastSearchOneMany() {
 			timeSearchOneMany(MED_SPEEDUP);
 		}
@@ -425,6 +427,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Tag("time-v4.2")
 		@Tag("time-v5.0")
 		@Tag("time-v5.1")
+		@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
 		public void fastSearchSingleMulti() {
 			timeSearchSingleMulti(MED_SPEEDUP);
 		}
