@@ -385,7 +385,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Order(1)
 		@Tag("time-v3.0")
 		public void okaySearchOneMany() {
-			timeSearchOneMany(MIN_SPEEDUP);
+			// should be slightly faster
+			timeSearchOneMany(1.01);
 		}
 
 		/**
@@ -395,7 +396,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Order(2)
 		@Tag("time-v3.0")
 		public void slowSearchSingleMulti() {
-			timeSearchSingleMulti(BAD_SPEEDUP);
+			// shouldn't be significantly slower
+			timeSearchSingleMulti(0.9);
 		}
 	}
 
