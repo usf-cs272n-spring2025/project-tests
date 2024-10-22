@@ -24,7 +24,7 @@ import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
  * @version Fall 2024
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
-@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "(?i)true")
+@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "true")
 public class ThreadTimedTests extends ProjectBenchmarks {
 	/**
 	 * Tests specific to multithreading.
