@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestClassOrder;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
 
 import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
 
@@ -24,7 +23,6 @@ import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
  * @version Fall 2024
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
-@EnabledIfSystemProperty(named = "GITHUB_ACTIONS", matches = "true")
 public class ThreadTimedTests extends ProjectBenchmarks {
 	/**
 	 * Tests specific to multithreading.
