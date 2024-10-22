@@ -370,7 +370,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		@Order(1)
 		@Tag("time-v3.1")
 		@Tag("time-v3.2")
-		public void slowIndexOneMany() {
+		public void okayIndexOneMany() {
 			timeIndexOneMany(MIN_SPEEDUP);
 		}
 
@@ -381,7 +381,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		@Order(2)
 		@Tag("time-v3.1")
 		@Tag("time-v3.2")
-		public void slowIndexSingleMulti() {
+		public void okayIndexSingleMulti() {
 			timeIndexSingleMulti(MIN_SPEEDUP);
 		}
 	}
