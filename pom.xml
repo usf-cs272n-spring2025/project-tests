@@ -17,20 +17,20 @@
 		
 		<!-- plugin versions (must be exact) -->
 		<versions.maven.compiler>3.13.0</versions.maven.compiler>
-		<versions.maven.surefire>3.5.0</versions.maven.surefire>
+		<versions.maven.surefire>3.5.1</versions.maven.surefire>
 		
 		<!-- dependency versions -->
 		<!-- https://maven.apache.org/pom.html#dependency-version-requirement-specification -->
-		<versions.junit.jupiter>5.11.2</versions.junit.jupiter>
-		<versions.junit.launcher>1.11.2</versions.junit.launcher>
+		<versions.junit.jupiter>5.11.3</versions.junit.jupiter>
+		<versions.junit.launcher>1.11.3</versions.junit.launcher>
 		
 		<versions.apache.opennlp>2.4.0</versions.apache.opennlp>
 		<versions.apache.log4j2>2.24.1</versions.apache.log4j2>
-		<versions.commons.lang3>3.16.0</versions.commons.lang3>
+		<versions.commons.lang3>3.17.0</versions.commons.lang3>
 		<versions.commons.text>1.12.0</versions.commons.text>
 		
 		<versions.jakarta.servlet>6.0.0</versions.jakarta.servlet>
-		<versions.eclipse.jetty>12.0.12</versions.eclipse.jetty>
+		<versions.eclipse.jetty>12.0.14</versions.eclipse.jetty>
 		<versions.mariadb.jdbc>3.4.1</versions.mariadb.jdbc>
 	</properties>
 	
