@@ -91,7 +91,7 @@ public class ProjectNextTests {
 	@Test
 	@Tag("next-v3.0")
 	public void testThreadSpeedup() throws IOException {
-		runJUnitTest(ThreadBuildTests.ThreadTests.class, "slowIndexSingleMulti");
+		runJUnitTest(ThreadBuildTests.ThreadTests.class, "okayIndexSingleMulti");
 	}
 
 	/**
