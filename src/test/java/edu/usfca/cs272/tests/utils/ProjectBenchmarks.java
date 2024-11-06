@@ -97,11 +97,12 @@ public class ProjectBenchmarks extends ProjectTests {
 			after.addAll(activeThreads());
 
 			// an intentional busy-wait loop (slow, but helps catch all possible worker threads)
-			while (!finished.await(200, TimeUnit.MILLISECONDS)) {
+			while (!finished.await(100, TimeUnit.MILLISECONDS)) {
 				after.addAll(activeThreads());
 			}
 
 			// wait for driver to terminate (might already be at this state)
+			after.addAll(activeThreads());
 			driver.join();
 
 			// try to figure out which ones are worker threads
