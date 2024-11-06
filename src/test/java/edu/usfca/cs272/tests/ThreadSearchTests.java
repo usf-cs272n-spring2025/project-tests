@@ -60,6 +60,10 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	@Nested
 	@Order(1)
 	@Tag("test-v3.0")
+	@Tag("test-v3.1")
+	@Tag("test-v3.2")
+	@Tag("test-v3.3")
+	@Tag("test-v3.4")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ApproachTests {
 		/**
@@ -67,36 +71,16 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		public void testExact() {
-			boolean partial = false;
-
+		public void testPartial() {
 			String[] args = {
 					TEXT.flag, ProjectPath.TEXT.text, 
 					QUERY.flag, ProjectPath.QUERY_COMPLEX.text,
-					partial ? PARTIAL.flag : "",
+					PARTIAL.flag,
 					THREADS.flag, ProjectBenchmarks.Threads.TWO.text
 			};
 			
 			Runnable test = () -> {
 				assertNoExceptions(args, LONG_TIMEOUT);
-				System.out.println("Random: " + Math.random());
-			};
-
-			ProjectBenchmarks.assertMultithreaded(test);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(2)
-		@Tag("test-v3.1")
-		@Tag("test-v3.2")
-		@Tag("test-v3.3")
-		@Tag("test-v3.4")
-		public void testPartial() {
-			Runnable test = () -> {
-				new PartialTests().testTextComplex(ProjectBenchmarks.Threads.TWO);
 				System.out.println("Random: " + Math.random());
 			};
 
