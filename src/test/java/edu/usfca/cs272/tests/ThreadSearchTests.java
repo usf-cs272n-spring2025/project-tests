@@ -68,8 +68,17 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Test
 		@Order(1)
 		public void testExact() {
+			boolean partial = false;
+
+			String[] args = {
+					TEXT.flag, ProjectPath.TEXT.text, 
+					QUERY.flag, ProjectPath.QUERY_COMPLEX.text,
+					partial ? PARTIAL.flag : "",
+					THREADS.flag, ProjectBenchmarks.Threads.TWO.text
+			};
+			
 			Runnable test = () -> {
-				new ExactTests().testTextComplex(ProjectBenchmarks.Threads.TWO);
+				assertNoExceptions(args, LONG_TIMEOUT);
 				System.out.println("Random: " + Math.random());
 			};
 
