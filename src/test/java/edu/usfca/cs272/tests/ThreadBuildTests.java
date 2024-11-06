@@ -64,22 +64,13 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		@Test
 		@Order(1)
 		public void testIndex() {
-			Runnable test = () -> {
-				new ComplexTests().testTextIndex(ProjectBenchmarks.Threads.TWO);
-				System.out.println("Random: " + Math.random());
+			String[] args = {
+					TEXT.flag, ProjectPath.TEXT.text, 
+					THREADS.flag, ProjectBenchmarks.Threads.TWO.text
 			};
-
-			ProjectBenchmarks.assertMultithreaded(test);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(2)
-		public void testCount() {
+			
 			Runnable test = () -> {
-				new ComplexTests().testTextCounts(ProjectBenchmarks.Threads.TWO);
+				assertNoExceptions(args, LONG_TIMEOUT);
 				System.out.println("Random: " + Math.random());
 			};
 
