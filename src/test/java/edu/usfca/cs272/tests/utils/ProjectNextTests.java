@@ -80,7 +80,7 @@ public class ProjectNextTests {
 	@Tag("next-v2.3")
 	@Tag("next-v2.4")
 	public void testThreadIndexOutput() throws IOException {
-		runJUnitTest(ThreadSearchTests.ApproachTests.class, "testExact");
+		runJUnitTest(ThreadSearchTests.ApproachTests.class, "testPartial");
 	}
 
 	/**
