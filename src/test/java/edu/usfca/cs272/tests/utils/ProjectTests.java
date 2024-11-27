@@ -490,7 +490,6 @@ public class ProjectTests {
 				BufferedWriter out = Files.newBufferedWriter(copy, UTF_8);
 		) {
 			String line = in.readLine();
-			System.out.println(copy);
 
 			if (line != null) {
 				// handle first line separately to avoid extra newline at end of file
@@ -516,11 +515,10 @@ public class ProjectTests {
 
 		Path nix = Path.of("expected-nix");
 		Path win = Path.of("expected-win");
-		Path skip = nix.resolve("crawl"); // do not convert URLs
+		Path crawl = nix.resolve("crawl"); // do not convert URLs
 
 		try (
 				Stream<Path> stream = Files.walk(nix, FileVisitOption.FOLLOW_LINKS)
-					.filter(path -> !path.startsWith(skip))
 					.filter(Files::isReadable)
 					.filter(Files::isRegularFile);
 		) {
@@ -529,7 +527,14 @@ public class ProjectTests {
 
 				if (!Files.isReadable(copy) || Files.size(original) != Files.size(copy)) {
 					Files.createDirectories(copy.getParent());
-					convertSlashes(original, copy);
+
+					if (!original.startsWith(crawl)) {
+						convertSlashes(original, copy);
+					}
+					else {
+						Files.copy(original, copy);
+					}
+
 					count++;
 				}
 			}
