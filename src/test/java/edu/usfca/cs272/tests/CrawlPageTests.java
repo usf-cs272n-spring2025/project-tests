@@ -57,6 +57,9 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	 * you will not have anything to worry about!
 	 */
 
+	/** Creates a new instance of this class. */
+	public CrawlPageTests() {}
+
 	/**
 	 * Tests the output of this project on smaller web pages.
 	 */
@@ -65,6 +68,9 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	@Tag("test-v4.0")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class InitialTests {
+		/** Creates a new instance of this class. */
+		public InitialTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -136,6 +142,9 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	@Order(2)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComplexTests {
+		/** Creates a new instance of this class. */
+		public ComplexTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -281,6 +290,9 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class SpecialTests {
+		/** Creates a new instance of this class. */
+		public SpecialTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -395,6 +407,9 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Free up memory before running.
 		 */
@@ -526,7 +541,7 @@ public class CrawlPageTests extends ProjectBenchmarks {
 	}
 
 	/** Base for the GitHub test website. */
-	public static final URI GITHUB = URI.create("https://usf-cs272n-fall2024.github.io/project-web/");
+	public static final URI GITHUB = URI.create("https://usf-cs272n-spring2025.github.io/project-web/");
 
 	/** Base directory for crawl output. */
 	public static final Path CRAWL = EXPECTED.resolve("crawl");

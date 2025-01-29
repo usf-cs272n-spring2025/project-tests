@@ -45,6 +45,9 @@ import edu.usfca.cs272.tests.utils.ProjectTests;
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 @ExtendWith(ProjectTests.TestCounter.class)
 public class ThreadBuildTests extends ProjectBenchmarks {
+	/** Creates a new instance of this class. */
+	public ThreadBuildTests() {}
+
 	/**
 	 * Tests that threads are being used for this project. These tests are slow and
 	 * should only be run when needed. The tests are also imperfect and may not
@@ -58,6 +61,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Tag("test-v3.4")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ApproachTests {
+		/** Creates a new instance of this class. */
+		public ApproachTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -65,10 +71,10 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		@Order(1)
 		public void testIndex() {
 			String[] args = {
-					TEXT.flag, ProjectPath.TEXT.text, 
+					TEXT.flag, ProjectPath.TEXT.text,
 					THREADS.flag, ProjectBenchmarks.Threads.TWO.text
 			};
-			
+
 			Runnable test = () -> {
 				assertNoExceptions(args, LONG_TIMEOUT);
 				System.out.println("Random: " + Math.random());
@@ -86,6 +92,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@TestMethodOrder(OrderAnnotation.class)
 	@Tag("test-v3.1")
 	public class InitialTests {
+		/** Creates a new instance of this class. */
+		public InitialTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 *
@@ -178,6 +187,8 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Tag("test-v3.3")
 	@Tag("test-v3.4")
 	public class ComplexTests {
+		/** Creates a new instance of this class. */
+		public ComplexTests() {}
 		/**
 		 * See the JUnit output for test details.
 		 *
@@ -224,6 +235,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Tests no exceptions are thrown with the provided arguments.
 		 *
@@ -342,6 +356,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Order(5)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ThreadTests {
+		/** Creates a new instance of this class. */
+		public ThreadTests() {}
+
 		/**
 		 * Sets up the tests before running. Only runs the tests if other tests had
 		 * no failures.
@@ -386,6 +403,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	@Tag("past-v4")
 	@Tag("past-v5")
 	public class ComboTests {
+		/** Creates a new instance of this class. */
+		public ComboTests() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */

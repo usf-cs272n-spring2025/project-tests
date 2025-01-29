@@ -24,6 +24,9 @@ import edu.usfca.cs272.tests.utils.ProjectBenchmarks;
  */
 @TestClassOrder(ClassOrderer.OrderAnnotation.class)
 public class ThreadTimedTests extends ProjectBenchmarks {
+	/** Creates a new instance of this class. */
+	public ThreadTimedTests() {}
+
 	/**
 	 * Tests specific to multithreading.
 	 *
@@ -33,6 +36,9 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 	@Order(1)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class IndexBenchmarks {
+		/** Creates a new instance of this class. */
+		public IndexBenchmarks() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */
@@ -83,6 +89,9 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 	@Order(2)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class SearchBenchmarks {
+		/** Creates a new instance of this class. */
+		public SearchBenchmarks() {}
+
 		/**
 		 * See the JUnit output for test details.
 		 */

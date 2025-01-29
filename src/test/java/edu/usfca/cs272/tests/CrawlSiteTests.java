@@ -53,6 +53,9 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	 * you will not have anything to worry about!
 	 */
 
+	/** Creates a new instance of this class. */
+	public CrawlSiteTests() {}
+
 	/**
 	 * Tests the output of this project on simple web sites.
 	 */
@@ -60,6 +63,25 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Order(1)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class InitialTests {
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
+
+		/** Creates a new instance of this class. */
+		public InitialTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -70,6 +92,22 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			ProjectTests.TestCounter.assertNoFailures(info);
 			ProjectTests.freeMemory();
 		}
+
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
 
 		/**
 		 * Tests the project output.
@@ -163,6 +201,25 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Order(2)
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ComplexTests {
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
+
+		/** Creates a new instance of this class. */
+		public ComplexTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -173,6 +230,22 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			ProjectTests.TestCounter.assertNoFailures(info);
 			ProjectTests.freeMemory();
 		}
+
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
 
 		/**
 		 * Tests the project output.
@@ -280,6 +353,25 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class SpecialTests {
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
+
+		/** Creates a new instance of this class. */
+		public SpecialTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -290,6 +382,22 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			ProjectTests.TestCounter.assertNoFailures(info);
 			ProjectTests.freeMemory();
 		}
+
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
 
 		/**
 		 * Tests the project output.
@@ -344,6 +452,25 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("past-v5")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ExceptionTests {
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
+
+		/** Creates a new instance of this class. */
+		public ExceptionTests() {}
+
 		/**
 		 * Free up memory before running.
 		 */
@@ -351,6 +478,22 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 		public static void freeMemory() {
 			ProjectTests.freeMemory();
 		}
+
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
 
 		/**
 		 * Tests that exceptions are not thrown.
@@ -461,6 +604,25 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 	@Tag("time-v5.1")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class RuntimeTests {
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
+
+		/** Creates a new instance of this class. */
+		public RuntimeTests() {}
+
 		/**
 		 * Only run if other tests had 0 failures.
 		 *
@@ -471,6 +633,22 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 			ProjectTests.TestCounter.assertNoFailures(info);
 			ProjectTests.freeMemory();
 		}
+
+		// ███████╗████████╗ ██████╗ ██████╗
+		// ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+		// ███████╗   ██║   ██║   ██║██████╔╝
+		// ╚════██║   ██║   ██║   ██║██╔═══╝
+		// ███████║   ██║   ╚██████╔╝██║
+		// ╚══════╝   ╚═╝    ╚═════╝ ╚═╝
+
+		/*
+		 * ...and read this! Please do not spam web servers by rapidly re-running all of
+		 * these tests over and over again. You risk being blocked by the web server if
+		 * you make making too many requests in too short of a time period!
+		 *
+		 * Focus on one test or one group of tests at a time instead. If you do that,
+		 * you will not have anything to worry about!
+		 */
 
 		/**
 		 * Tests build speedup.
