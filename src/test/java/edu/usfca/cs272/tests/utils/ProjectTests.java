@@ -40,7 +40,7 @@ import edu.usfca.cs272.Driver;
  * Utility methods used by other JUnit test classes.
  *
  * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2024
+ * @version Spring 2025
  */
 public class ProjectTests {
 	/** Amount of time to wait for long-running tests to finish. */
