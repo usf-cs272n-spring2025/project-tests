@@ -15,6 +15,7 @@
 	</Appenders>
 
 	<Loggers>
+		<!-- By default, logging is disabled for tests. Enable if needed for debugging purposes! -->
 		<Root level="OFF">
 			<AppenderRef ref="Console" level="OFF" />
 			<AppenderRef ref="Debug" level="OFF" />
