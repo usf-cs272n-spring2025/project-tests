@@ -41,6 +41,7 @@
 				
 				<configuration>
 					<compilerArgs>
+						<arg>-proc:full</arg>
 						<arg>${config.xlint}</arg>
 						<arg>${config.xdoclint}</arg>
 						<arg>-Xdoclint/package:-edu.usfca.cs272.tests.*</arg>
