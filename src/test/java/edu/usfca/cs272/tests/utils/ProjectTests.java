@@ -13,9 +13,14 @@ import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -25,6 +30,11 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.Status;
+import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -51,6 +61,9 @@ public class ProjectTests {
 
 	/** Stores failures from uncaught exceptions. */
 	public static final List<Executable> UNCAUGHT = Collections.synchronizedList(new ArrayList<>());
+
+	/** Location of .git folder. */
+	public static final Path GIT_DIR = Path.of(".git").toAbsolutePath().normalize();
 
 	/**
 	 * Generates header for debugging output when an error occurs.
@@ -333,6 +346,82 @@ public class ProjectTests {
 			System.err.printf(formatted);
 			return formatted;
 		};
+	}
+
+	/**
+	 * Checks if a commit should be made before the tests are run.
+	 *
+	 * @throws Exception if unable to parse git information
+	 *
+	 * @see <a href="https://github.com/eclipse-jgit/jgit/wiki/User-Guide">jgit</a>
+	 * @see <a href="https://github.com/centic9/jgit-cookbook">jgit-cookbook</a>
+	 */
+	@BeforeAll
+	public static void checkCommits() throws Exception {
+		if ("true".equals(System.getenv("GITHUB_ACTIONS"))) {
+			// do not run on GitHub Actions environment
+			return;
+		}
+
+		if (!Files.isDirectory(GIT_DIR)) {
+			Assertions.fail("Unable to locate .git directory...");
+		}
+
+		// setup repository builder
+		FileRepositoryBuilder builder = new FileRepositoryBuilder();
+		builder = builder.setGitDir(GIT_DIR.toFile())
+				.readEnvironment()
+				.findGitDir();
+
+		// try to load repository
+		try (
+			Repository repository = builder.build();
+			Git git = new Git(repository);
+		) {
+			Status status = git.status().call();
+
+			// get uncommitted changes to java files only
+			List<String> changes = status.getUncommittedChanges()
+					.stream()
+					.filter(s -> s.endsWith(".java"))
+					.toList();
+
+			// if there are uncommitted java changes,
+			// check how long its been since the last commit
+			if (!changes.isEmpty()) {
+				System.err.printf("Found %d uncommitted changes: %s%n", changes.size(), changes);
+				Iterator<RevCommit> logs = git.log().call().iterator();
+
+				if (logs.hasNext()) {
+					RevCommit commit = logs.next();
+
+					// get commit date/time and current date/time in same time zone
+					ZoneId zone = commit.getAuthorIdent().getTimeZone().toZoneId();
+					Instant timestamp = Instant.ofEpochSecond(commit.getCommitTime());
+					ZonedDateTime committed = ZonedDateTime.ofInstant(timestamp, zone);
+					ZonedDateTime today = ZonedDateTime.now(zone);
+
+					// get elapsed minutes since last commit
+					Duration elapsed = Duration.between(committed, today);
+					long minutes = elapsed.toMinutes();
+
+					// output a warning and stop running tests if over 30 minutes
+					if (minutes > 30) {
+						String date = DateTimeFormatter.ofPattern("h:mm a 'on' MMM d, yyyy").format(committed);
+						String output = "Your last commit was at " + date + ". " +
+								"Please make a new commit before running the tests.";
+
+						System.err.println(output);
+						Assertions.fail(output);
+					}
+				}
+				else {
+					String output = "Please make a first commit before running the tests.";
+					System.err.println(output);
+					Assertions.fail(output);
+				}
+			}
+		}
 	}
 
 	/**
