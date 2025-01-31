@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -61,9 +62,6 @@ public class ProjectTests {
 
 	/** Stores failures from uncaught exceptions. */
 	public static final List<Executable> UNCAUGHT = Collections.synchronizedList(new ArrayList<>());
-
-	/** Location of .git folder. */
-	public static final Path GIT_DIR = Path.of(".git").toAbsolutePath().normalize();
 
 	/**
 	 * Generates header for debugging output when an error occurs.
@@ -363,13 +361,40 @@ public class ProjectTests {
 			return;
 		}
 
-		if (!Files.isDirectory(GIT_DIR)) {
-			Assertions.fail("Unable to locate .git directory...");
+		// sometimes test run in project-tests repo, not project source repo
+		// need to find location of Driver class
+		// see: https://stackoverflow.com/a/778246
+		URL resource = Driver.class.getResource("Driver.class");
+
+		if (resource == null || !resource.getProtocol().equalsIgnoreCase("file")) {
+			Assertions.fail("Unable to locate Driver.java for project...");
+		}
+
+		// attempt to find .git folder
+		Path driver = Path.of(resource.toURI());
+		Path current = driver.getParent();
+
+		Path gitDir = null;
+		Path pomXml = null;
+
+		while (current != null) {
+			gitDir = current.resolve(".git");
+			pomXml = current.resolve("pom.xml");
+
+			if (Files.isDirectory(gitDir) && Files.isRegularFile(pomXml)) {
+				break;
+			}
+
+			current = current.getParent();
+		}
+
+		if (!Files.isDirectory(gitDir)) {
+			Assertions.fail("Unable to locate .git directory for project...");
 		}
 
 		// setup repository builder
 		FileRepositoryBuilder builder = new FileRepositoryBuilder();
-		builder = builder.setGitDir(GIT_DIR.toFile())
+		builder = builder.setGitDir(gitDir.toFile())
 				.readEnvironment()
 				.findGitDir();
 
