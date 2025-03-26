@@ -5,8 +5,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.time.Instant;
@@ -230,7 +228,7 @@ public class ProjectBenchmarks extends ProjectTests {
 		double speedup = (double) min1 / min2;
 
 		// round speedup to 2 decimal points
-		speedup = BigDecimal.valueOf(speedup).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		// speedup = BigDecimal.valueOf(speedup).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
 		out.printf("%10s: x%10.6f %n", "Speedup", speedup);
 		out.printf("```%n%n");
