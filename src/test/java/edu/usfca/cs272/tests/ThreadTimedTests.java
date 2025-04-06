@@ -66,7 +66,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Order(3)
 		@Tag("time-v3.4")
 		public void fastIndexOneMany() {
-			timeIndexOneMany(MAX_SPEEDUP);
+			timeIndexOneMany(MAX_SPEEDUP, 4);
 		}
 
 		/**
@@ -76,7 +76,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Order(4)
 		@Tag("time-v3.4")
 		public void fastSingleMulti() {
-			timeIndexSingleMulti(MAX_SPEEDUP);
+			timeIndexSingleMulti(MAX_SPEEDUP, 4);
 		}
 	}
 
@@ -141,7 +141,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Order(5)
 		@Tag("time-v3.4")
 		public void fastSearchOneMany() {
-			timeSearchOneMany(MAX_SPEEDUP);
+			timeSearchOneMany(MAX_SPEEDUP, 4);
 		}
 
 		/**
@@ -156,7 +156,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Tag("time-v5.0")
 		@Tag("time-v5.1")
 		public void fastSearchSingleMulti() {
-			timeSearchSingleMulti(MAX_SPEEDUP);
+			timeSearchSingleMulti(MAX_SPEEDUP, 4);
 		}
 	}
 }
