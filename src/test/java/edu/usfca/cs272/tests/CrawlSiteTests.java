@@ -768,4 +768,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 
 	/** The default number of threads to use when benchmarking workers. */
 	public static final ProjectBenchmarks.Threads BENCH_WORKERS = ProjectBenchmarks.Threads.FOUR;
+
+	/** Maximum speedup cutoff. */
+	public static final double MAX_SPEEDUP = 2.0;
 }
