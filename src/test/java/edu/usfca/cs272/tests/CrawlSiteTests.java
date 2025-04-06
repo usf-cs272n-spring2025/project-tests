@@ -765,4 +765,7 @@ public class CrawlSiteTests extends ProjectBenchmarks {
 		config.put(ProjectFlag.THREADS, BENCH_WORKERS.text);
 		CrawlPageTests.testCrawl(seed, subdir, id + "-" + crawl, config, output);
 	}
+
+	/** The default number of threads to use when benchmarking workers. */
+	public static final ProjectBenchmarks.Threads BENCH_WORKERS = ProjectBenchmarks.Threads.FOUR;
 }
