@@ -45,6 +45,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Test
 		@Order(1)
 		@Tag("time-v3.3")
+		@Tag("time-v3.4")
 		public void goodIndexOneMany() {
 			timeIndexOneMany(MOD_SPEEDUP);
 		}
@@ -64,16 +65,6 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(3)
-		@Tag("time-v3.4")
-		public void fastIndexOneMany() {
-			timeIndexOneMany(MAX_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(4)
 		@Tag("time-v3.4")
 		public void fastSingleMulti() {
 			timeIndexSingleMulti(MAX_SPEEDUP);
@@ -97,7 +88,6 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		@Tag("time-v3.1")
 		@Tag("time-v3.2")
 		public void okaySearchOneMany() {
 			timeSearchOneMany(MIN_SPEEDUP);
