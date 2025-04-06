@@ -397,7 +397,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Tag("time-v3.0")
 		public void okaySearchOneMany() {
 			// should be slightly faster
-			timeSearchOneMany(1.01, ProjectBenchmarks.BENCH_WORKERS.num);
+			timeSearchOneMany(1.01);
 		}
 
 		/**
@@ -408,7 +408,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Tag("time-v3.0")
 		public void slowSearchSingleMulti() {
 			// shouldn't be significantly slower
-			timeSearchSingleMulti(0.9, ProjectBenchmarks.BENCH_MULTI.num);
+			timeSearchSingleMulti(0.9);
 		}
 	}
 
@@ -499,6 +499,15 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 * Time building with 1 versus many workers.
 	 *
 	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeSearchOneMany(double target) {
+		timeSearchOneMany(target, ProjectBenchmarks.BENCH_WORKERS.num);
+	}
+
+	/**
+	 * Time building with 1 versus many workers.
+	 *
+	 * @param target the target speedup to pass these tests
 	 * @param threads the maximum number of worker threads to use
 	 */
 	public static void timeSearchOneMany(double target, int threads) {
@@ -522,6 +531,15 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 			Supplier<String> debug = () -> String.format(format, threads, result, target, "1 worker");
 			assertTrue(result >= target, debug);
 		});
+	}
+
+	/**
+	 * Time searching with single versus threading.
+	 *
+	 * @param target the target speedup to pass these tests
+	 */
+	public static void timeSearchSingleMulti(double target) {
+		timeSearchSingleMulti(target, ProjectBenchmarks.BENCH_MULTI.num);
 	}
 
 	/**
