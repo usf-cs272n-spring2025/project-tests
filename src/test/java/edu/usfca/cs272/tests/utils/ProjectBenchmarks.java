@@ -56,7 +56,7 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final int TIMED_ROUNDS = GITHUB ? 6 : 10;
 
 	/** The default number of threads to use when benchmarking single versus multithreading. */
-	public static final ProjectBenchmarks.Threads BENCH_MULTI = ProjectBenchmarks.Threads.TWO;
+	public static final ProjectBenchmarks.Threads BENCH_MULTI = ProjectBenchmarks.Threads.THREE;
 
 	/** The default number of threads to use when benchmarking workers. */
 	public static final ProjectBenchmarks.Threads BENCH_WORKERS = ProjectBenchmarks.Threads.THREE;
