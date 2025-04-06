@@ -504,7 +504,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeIndexOneMany(double target) {
-		timeIndexOneMany(target, ProjectBenchmarks.BENCH_WORKERS.num);
+		timeIndexOneMany(target, ProjectBenchmarks.Threads.TWO.num);
 	}
 
 	/**
@@ -535,7 +535,7 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeIndexSingleMulti(double target) {
-		timeIndexSingleMulti(target, ProjectBenchmarks.BENCH_MULTI.num);
+		timeIndexSingleMulti(target, ProjectBenchmarks.Threads.FOUR.num);
 	}
 
 	/**

@@ -501,7 +501,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeSearchOneMany(double target) {
-		timeSearchOneMany(target, ProjectBenchmarks.BENCH_WORKERS.num);
+		timeSearchOneMany(target, ProjectBenchmarks.Threads.FOUR.num);
 	}
 
 	/**
@@ -539,7 +539,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeSearchSingleMulti(double target) {
-		timeSearchSingleMulti(target, ProjectBenchmarks.BENCH_MULTI.num);
+		timeSearchSingleMulti(target, ProjectBenchmarks.Threads.FOUR.num);
 	}
 
 	/**
