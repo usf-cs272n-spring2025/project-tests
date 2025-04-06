@@ -397,7 +397,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Tag("time-v3.0")
 		public void okaySearchOneMany() {
 			// should be slightly faster
-			timeSearchOneMany(1.01);
+			timeSearchOneMany(1.01, ProjectBenchmarks.BENCH_WORKERS.num);
 		}
 
 		/**
@@ -408,7 +408,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		@Tag("time-v3.0")
 		public void slowSearchSingleMulti() {
 			// shouldn't be significantly slower
-			timeSearchSingleMulti(0.9);
+			timeSearchSingleMulti(0.9, ProjectBenchmarks.BENCH_MULTI.num);
 		}
 	}
 
@@ -488,7 +488,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		String[] args = {
 				TEXT.flag, input.text, QUERY.flag, queries.toString(),
 				RESULTS.flag, actual.toString(), partial ? PARTIAL.flag : "",
-				THREADS.flag, threads.text
+				THREADS.flag, String.valueOf(threads)
 		};
 
 		Executable debug = () -> checkOutput(args, actual, expected);
@@ -499,8 +499,9 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 * Time building with 1 versus many workers.
 	 *
 	 * @param target the target speedup to pass these tests
+	 * @param threads the maximum number of worker threads to use
 	 */
-	public static void timeSearchOneMany(double target) {
+	public static void timeSearchOneMany(double target, int threads) {
 		String[] args1 = {
 				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
 				PARTIAL.flag, THREADS.flag, String.valueOf(1)
@@ -508,7 +509,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 
 		String[] args2 = {
 				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
-				PARTIAL.flag, THREADS.flag, BENCH_WORKERS.text
+				PARTIAL.flag, THREADS.flag, String.valueOf(threads)
 		};
 
 		// make sure code runs without exceptions before testing
@@ -517,8 +518,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 
 		// then test the timing
 		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-			double result = compare("Search", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
-			Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
+			double result = compare("Search", "1 Worker", args1, threads + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, threads, result, target, "1 worker");
 			assertTrue(result >= target, debug);
 		});
 	}
@@ -527,13 +528,14 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 * Time searching with single versus threading.
 	 *
 	 * @param target the target speedup to pass these tests
+	 * @param threads the maximum number of worker threads to use
 	 */
-	public static void timeSearchSingleMulti(double target) {
+	public static void timeSearchSingleMulti(double target, int threads) {
 		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text, PARTIAL.flag };
 
 		String[] args2 = {
 				TEXT.flag, ProjectPath.TEXT.text, QUERY.flag, QUERY_COMPLEX.text,
-				PARTIAL.flag, THREADS.flag, BENCH_MULTI.text
+				PARTIAL.flag, THREADS.flag, String.valueOf(threads)
 		};
 
 		// make sure code runs without exceptions before testing
@@ -542,8 +544,8 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 
 		// then test the timing
 		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-			double result = compare("Search", "Single", args1, BENCH_MULTI.text + " Workers", args2);
-			Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
+			double result = compare("Search", "Single", args1, threads + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, threads, result, target, "single-threading");
 			assertTrue(result >= target, debug);
 		});
 	}
