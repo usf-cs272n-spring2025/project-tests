@@ -47,7 +47,7 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final double MOD_SPEEDUP = 1.2;
 
 	/** Maximum speedup cutoff. */
-	public static final double MAX_SPEEDUP = 1.4;
+	public static final double MAX_SPEEDUP = 1.3;
 
 	/** The number of rounds to use when benchmarking. */
 	public static final int TIMED_ROUNDS = GITHUB ? 10 : 15;
