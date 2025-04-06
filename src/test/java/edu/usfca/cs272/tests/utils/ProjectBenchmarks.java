@@ -44,19 +44,13 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final double MIN_SPEEDUP = 1.1;
 
 	/** Moderate speedup cutoff. */
-	public static final double MOD_SPEEDUP = 1.5;
+	public static final double MOD_SPEEDUP = 1.2;
 
 	/** Maximum speedup cutoff. */
-	public static final double MAX_SPEEDUP = 1.8;
+	public static final double MAX_SPEEDUP = 1.4;
 
 	/** The number of rounds to use when benchmarking. */
 	public static final int TIMED_ROUNDS = GITHUB ? 10 : 15;
-
-	/** The default number of threads to use when benchmarking single versus multithreading. */
-	public static final ProjectBenchmarks.Threads BENCH_MULTI = ProjectBenchmarks.Threads.THREE;
-
-	/** The default number of threads to use when benchmarking workers. */
-	public static final ProjectBenchmarks.Threads BENCH_WORKERS = ProjectBenchmarks.Threads.THREE;
 
 	/** Format string used for debug output. */
 	public static final String format = "%d workers has a %.2fx speedup (less than the %.1fx required) compared to %s.";
@@ -290,8 +284,8 @@ public class ProjectBenchmarks extends ProjectTests {
 		/** Two threads */
 		TWO(2),
 
-		/** Three threads */
-		THREE(3);
+		/** Four threads */
+		FOUR(4);
 
 		/** The number of threads as an int. */
 		public final int num;
