@@ -50,7 +50,7 @@ public class ProjectBenchmarks extends ProjectTests {
 	public static final double MAX_SPEEDUP = 1.8;
 
 	/** The number of warmup runs when benchmarking. */
-	public static final int WARMUP_ROUNDS = GITHUB ? 2 : 5;
+//	public static final int WARMUP_ROUNDS = GITHUB ? 2 : 5;
 
 	/** The number of rounds to use when benchmarking. */
 	public static final int TIMED_ROUNDS = GITHUB ? 6 : 10;
@@ -149,7 +149,7 @@ public class ProjectBenchmarks extends ProjectTests {
 	 */
 	public static double compare(String file, String label1, String[] args1, String label2, String[] args2)
 			throws IOException {
-		return compare(file, label1, args1, label2, args2, WARMUP_ROUNDS, TIMED_ROUNDS);
+		return compare(file, label1, args1, label2, args2, TIMED_ROUNDS);
 	}
 
 	/**
@@ -161,21 +161,19 @@ public class ProjectBenchmarks extends ProjectTests {
 	 * @param args1 the first argument set
 	 * @param label2 the label of the second argument set
 	 * @param args2 the second argument set
-	 * @param warmRuns the number of warmup runs to use
 	 * @param timeRuns the number of timed runs to use
 	 * @return the runtime difference between the first and second set of arguments
 	 * @throws IOException if an I/O error occurs
 	 */
-	public static double compare(String file, String label1, String[] args1, String label2, String[] args2, int warmRuns,
-			int timeRuns) throws IOException {
+	public static double compare(String file, String label1, String[] args1, String label2, String[] args2, int timeRuns) throws IOException {
 		Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.OFF);
 
 		// free up memory before benchmarking
 		ProjectTests.freeMemory();
 
 		// begin benchmarking
-		long[] runs1 = benchmark(args1, warmRuns, timeRuns);
-		long[] runs2 = benchmark(args2, warmRuns, timeRuns);
+		long[] runs1 = benchmark(args1, timeRuns);
+		long[] runs2 = benchmark(args2, timeRuns);
 
 		long total1 = 0;
 		long total2 = 0;
@@ -192,20 +190,21 @@ public class ProjectBenchmarks extends ProjectTests {
 		String valueFormat = "%-6d    %10.6f    %10.6f%n";
 
 		out.printf("%n```%n");
-		out.printf(labelFormat, "Warmup", label1, label2);
+//		out.printf(labelFormat, "Warmup", label1, label2);
+//
+//		for (int i = 0; i < warmRuns; i++) {
+//			min1 = Math.min(min1, runs1[i]);
+//			min2 = Math.min(min2, runs2[i]);
+//
+//			out.printf(valueFormat, i + 1, (double) runs1[i] / Duration.ofSeconds(1).toMillis(),
+//					(double) runs2[i] / Duration.ofSeconds(1).toMillis());
+//		}
+//
+//		out.println();
+		out.printf(labelFormat, "Round", label1, label2);
 
-		for (int i = 0; i < warmRuns; i++) {
-			min1 = Math.min(min1, runs1[i]);
-			min2 = Math.min(min2, runs2[i]);
-
-			out.printf(valueFormat, i + 1, (double) runs1[i] / Duration.ofSeconds(1).toMillis(),
-					(double) runs2[i] / Duration.ofSeconds(1).toMillis());
-		}
-
-		out.println();
-		out.printf(labelFormat, "Timed", label1, label2);
-
-		for (int i = warmRuns; i < warmRuns + timeRuns; i++) {
+		for (int i = 0; i < timeRuns; i++) {
+//		for (int i = warmRuns; i < warmRuns + timeRuns; i++) {
 			total1 += runs1[i];
 			total2 += runs2[i];
 
@@ -251,12 +250,11 @@ public class ProjectBenchmarks extends ProjectTests {
 	 * arguments. Tracks the timing of every run to allow of visual inspection.
 	 *
 	 * @param args the arguments to run
-	 * @param warmRuns the number of warmup runs to use
 	 * @param timeRuns the number of timed runs to use
 	 * @return an array of all the runtimes, including warmup runs and timed runs
 	 */
-	public static long[] benchmark(String[] args, int warmRuns, int timeRuns) {
-		long[] runs = new long[warmRuns + timeRuns];
+	public static long[] benchmark(String[] args, int timeRuns) {
+		long[] runs = new long[timeRuns];
 
 		Instant start;
 		Duration elapsed;
@@ -272,19 +270,20 @@ public class ProjectBenchmarks extends ProjectTests {
 		systemOut.print("Benchmarking");
 
 		try {
-			for (int i = 0; i < warmRuns; i++) {
-				start = Instant.now();
-				Driver.main(args);
-				elapsed = Duration.between(start, Instant.now());
-				runs[i] = elapsed.toMillis();
-				systemOut.print(".");
-			}
+//			for (int i = 0; i < warmRuns; i++) {
+//				start = Instant.now();
+//				Driver.main(args);
+//				elapsed = Duration.between(start, Instant.now());
+//				runs[i] = elapsed.toMillis();
+//				systemOut.print(".");
+//			}
 
 			for (int i = 0; i < timeRuns; i++) {
 				start = Instant.now();
 				Driver.main(args);
 				elapsed = Duration.between(start, Instant.now());
-				runs[i + warmRuns] = elapsed.toMillis();
+//				runs[i + warmRuns] = elapsed.toMillis();
+				runs[i] = elapsed.toMillis();
 				systemOut.print(".");
 			}
 		}
