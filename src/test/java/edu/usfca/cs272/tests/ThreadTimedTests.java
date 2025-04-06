@@ -76,7 +76,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Order(4)
 		@Tag("time-v3.4")
 		public void fastSingleMulti() {
-			timeIndexSingleMulti(MAX_SPEEDUP, 5);
+			timeIndexSingleMulti(MAX_SPEEDUP, 4);
 		}
 	}
 
@@ -156,7 +156,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Tag("time-v5.0")
 		@Tag("time-v5.1")
 		public void fastSearchSingleMulti() {
-			timeSearchSingleMulti(MAX_SPEEDUP, 5);
+			timeSearchSingleMulti(MAX_SPEEDUP, 4);
 		}
 	}
 }
