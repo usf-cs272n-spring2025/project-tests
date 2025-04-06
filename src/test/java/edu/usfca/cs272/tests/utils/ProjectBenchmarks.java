@@ -49,9 +49,6 @@ public class ProjectBenchmarks extends ProjectTests {
 	/** Maximum speedup cutoff. */
 	public static final double MAX_SPEEDUP = 1.8;
 
-	/** The number of warmup runs when benchmarking. */
-//	public static final int WARMUP_ROUNDS = GITHUB ? 2 : 5;
-
 	/** The number of rounds to use when benchmarking. */
 	public static final int TIMED_ROUNDS = GITHUB ? 10 : 15;
 
@@ -190,21 +187,9 @@ public class ProjectBenchmarks extends ProjectTests {
 		String valueFormat = "%-6d    %10.6f    %10.6f%n";
 
 		out.printf("%n```%n");
-//		out.printf(labelFormat, "Warmup", label1, label2);
-//
-//		for (int i = 0; i < warmRuns; i++) {
-//			min1 = Math.min(min1, runs1[i]);
-//			min2 = Math.min(min2, runs2[i]);
-//
-//			out.printf(valueFormat, i + 1, (double) runs1[i] / Duration.ofSeconds(1).toMillis(),
-//					(double) runs2[i] / Duration.ofSeconds(1).toMillis());
-//		}
-//
-//		out.println();
 		out.printf(labelFormat, "Round", label1, label2);
 
 		for (int i = 0; i < timeRuns; i++) {
-//		for (int i = warmRuns; i < warmRuns + timeRuns; i++) {
 			total1 += runs1[i];
 			total2 += runs2[i];
 
@@ -270,19 +255,10 @@ public class ProjectBenchmarks extends ProjectTests {
 		systemOut.print("Benchmarking");
 
 		try {
-//			for (int i = 0; i < warmRuns; i++) {
-//				start = Instant.now();
-//				Driver.main(args);
-//				elapsed = Duration.between(start, Instant.now());
-//				runs[i] = elapsed.toMillis();
-//				systemOut.print(".");
-//			}
-
 			for (int i = 0; i < timeRuns; i++) {
 				start = Instant.now();
 				Driver.main(args);
 				elapsed = Duration.between(start, Instant.now());
-//				runs[i + warmRuns] = elapsed.toMillis();
 				runs[i] = elapsed.toMillis();
 				systemOut.print(".");
 			}
