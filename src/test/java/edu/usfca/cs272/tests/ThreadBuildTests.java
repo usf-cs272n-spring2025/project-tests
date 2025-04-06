@@ -504,8 +504,18 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeIndexOneMany(double target) {
+		timeIndexOneMany(target, ProjectBenchmarks.BENCH_WORKERS.num);
+	}
+
+	/**
+	 * Time building with 1 versus many workers.
+	 *
+	 * @param target the target speedup to pass these tests
+	 * @param threads the maximum number of worker threads to use
+	 */
+	public static void timeIndexOneMany(double target, int threads) {
 		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(1) };
-		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_WORKERS.text };
+		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(threads) };
 
 		// make sure code runs without exceptions before testing
 		assertNoExceptions(args1, SHORT_TIMEOUT);
@@ -513,8 +523,8 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 
 		// then test the timing
 		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-			double result = compare("Build", "1 Worker", args1, BENCH_WORKERS.text + " Workers", args2);
-			Supplier<String> debug = () -> String.format(format, BENCH_WORKERS.num, result, target, "1 worker");
+			double result = compare("Build", "1 Worker", args1, threads + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, threads, result, target, "1 worker");
 			assertTrue(result >= target, debug);
 		});
 	}
@@ -525,8 +535,18 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 * @param target the target speedup to pass these tests
 	 */
 	public static void timeIndexSingleMulti(double target) {
+		timeIndexSingleMulti(target, ProjectBenchmarks.BENCH_MULTI.num);
+	}
+
+	/**
+	 * Time building with single versus threading.
+	 *
+	 * @param target the target speedup to pass these tests
+	 * @param threads the maximum number of worker threads to use
+	 */
+	public static void timeIndexSingleMulti(double target, int threads) {
 		String[] args1 = { TEXT.flag, ProjectPath.TEXT.text };
-		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, BENCH_MULTI.text };
+		String[] args2 = { TEXT.flag, ProjectPath.TEXT.text, THREADS.flag, String.valueOf(threads) };
 
 		// make sure code runs without exceptions before testing
 		assertNoExceptions(args1, SHORT_TIMEOUT);
@@ -534,8 +554,8 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 
 		// then test the timing
 		assertTimeoutPreemptively(LONG_TIMEOUT, () -> {
-			double result = compare("Build", "Single", args1, BENCH_MULTI.text + " Workers", args2);
-			Supplier<String> debug = () -> String.format(format, BENCH_MULTI.num, result, target, "single-threading");
+			double result = compare("Build", "Single", args1, threads + " Workers", args2);
+			Supplier<String> debug = () -> String.format(format, threads, result, target, "single-threading");
 			assertTrue(result >= target, debug);
 		});
 	}
