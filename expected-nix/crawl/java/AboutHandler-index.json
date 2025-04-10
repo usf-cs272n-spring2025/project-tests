@@ -1,215 +1,116 @@
 {
-  "": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      1
-    ]
-  },
   "a": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      117,
-      156
+      116,
+      155
     ]
   },
   "about": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      59,
-      88,
-      105,
-      114
+      58,
+      87,
+      104,
+      113
     ]
   },
   "abouthandl": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      43,
-      46
+      42,
+      45
     ]
   },
   "affili": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      165,
-      176
+      164,
+      175
     ]
   },
   "all": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      67
+      66
     ]
   },
   "also": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      63
+      62
     ]
   },
   "an": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      47,
-      121
+      46,
+      120
     ]
   },
   "and": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      72,
-      127,
-      148,
-      169,
-      191
+      71,
+      126,
+      147,
+      168,
+      190
     ]
   },
   "andor": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      163,
-      174
+      162,
+      173
     ]
   },
   "api": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      125
+      124
     ]
   },
   "app": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      53
+      52
     ]
   },
   "applic": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      82,
-      99
+      81,
+      98
     ]
   },
   "ask": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      55,
-      84,
-      101
+      54,
+      83,
+      100
     ]
   },
   "bug": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      118
+      117
     ]
   },
   "ca": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      181
+      180
     ]
   },
   "call": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      79,
-      96
+      78,
+      95
     ]
   },
   "class": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      11
+      10
     ]
   },
   "code": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      150
+      149
     ]
   },
   "conceptu": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      142
+      141
     ]
   },
   "constr": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      22,
-      26,
-      31,
-      35
-    ]
-  },
-  "contain": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      136
-    ]
-  },
-  "copyright": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      172
-    ]
-  },
-  "countri": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      171
-    ]
-  },
-  "definit": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      144
-    ]
-  },
-  "deprec": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      16
-    ]
-  },
-  "descript": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      75,
-      140
-    ]
-  },
-  "desktopsetabouthandlerabouthandl": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      64
-    ]
-  },
-  "detail": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      24,
-      33,
-      91,
-      138
-    ]
-  },
-  "develop": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      128
-    ]
-  },
-  "developertarget": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      139
-    ]
-  },
-  "dialog": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      60,
-      89,
-      106,
-      115
-    ]
-  },
-  "document": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      129,
-      134,
-      193
-    ]
-  },
-  "e": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      78,
-      95,
-      108
-    ]
-  },
-  "enhanc": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      122
-    ]
-  },
-  "exampl": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      151
-    ]
-  },
-  "field": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
       21,
       25,
@@ -217,421 +118,515 @@
       34
     ]
   },
-  "for": {
+  "contain": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      123
+      135
     ]
   },
-  "further": {
+  "copyright": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      124
+      171
     ]
   },
-  "handleabout": {
+  "countri": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      92
+      170
     ]
   },
-  "handleaboutaboutev": {
+  "definit": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      77,
-      94
+      143
     ]
   },
-  "help": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      18
-    ]
-  },
-  "implement": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      48
-    ]
-  },
-  "in": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      166
-    ]
-  },
-  "index": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      17
-    ]
-  },
-  "interfac": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      42,
-      45
-    ]
-  },
-  "is": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      54,
-      83,
-      100,
-      155,
-      186
-    ]
-  },
-  "it": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      58,
-      87,
-      104,
-      164,
-      175
-    ]
-  },
-  "java": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      5,
-      132,
-      154
-    ]
-  },
-  "javaawtdesktop": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      41
-    ]
-  },
-  "javadesktop": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      39
-    ]
-  },
-  "jdk": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      7
-    ]
-  },
-  "licens": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      189
-    ]
-  },
-  "link": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      4
-    ]
-  },
-  "method": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      23,
-      27,
-      32,
-      36,
-      65,
-      70,
-      74,
-      90
-    ]
-  },
-  "methodsabstract": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      69
-    ]
-  },
-  "methodsinst": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      68
-    ]
-  },
-  "modifi": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      71
-    ]
-  },
-  "modul": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      9,
-      38
-    ]
-  },
-  "more": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      137
-    ]
-  },
-  "navig": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      3
-    ]
-  },
-  "nest": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      20,
-      29
-    ]
-  },
-  "new": {
+  "deprec": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
       15
     ]
   },
-  "notif": {
+  "descript": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      50
+      74,
+      139
     ]
   },
-  "of": {
+  "desktopsetabouthandlerabouthandl": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      145,
-      161
+      63
     ]
   },
-  "or": {
+  "detail": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      119,
-      158
+      23,
+      32,
+      90,
+      137
     ]
   },
-  "oracl": {
+  "develop": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      162,
-      173,
-      177
+      127
     ]
   },
-  "other": {
+  "developertarget": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      152,
-      170
+      138
     ]
   },
-  "overview": {
+  "dialog": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      8,
-      143
+      59,
+      88,
+      105,
+      114
     ]
   },
-  "packag": {
+  "document": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      10,
-      40
-    ]
-  },
-  "paramet": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      107
-    ]
-  },
-  "parkway": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      178
-    ]
-  },
-  "polici": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      195
-    ]
-  },
-  "preview": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      14
-    ]
-  },
-  "public": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      44
-    ]
-  },
-  "receiv": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      49
-    ]
-  },
-  "redistribut": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      194
-    ]
-  },
-  "redwood": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      179
-    ]
-  },
-  "refer": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      126
-    ]
-  },
-  "regist": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      159
-    ]
-  },
-  "report": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      116
-    ]
-  },
-  "request": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      110
-    ]
-  },
-  "reserv": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      184
-    ]
-  },
-  "right": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      183
-    ]
-  },
-  "se": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      6,
-      133
-    ]
-  },
-  "search": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      37
-    ]
-  },
-  "see": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      62,
-      130
-    ]
-  },
-  "shore": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      180
-    ]
-  },
-  "show": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      57,
-      86,
-      103,
-      112
-    ]
-  },
-  "sinc": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      61
-    ]
-  },
-  "skip": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      2
-    ]
-  },
-  "subject": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      187
-    ]
-  },
-  "suggest": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      120
-    ]
-  },
-  "summari": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      19,
-      28,
-      66
-    ]
-  },
-  "term": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      146,
-      190
-    ]
-  },
-  "the": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      52,
-      81,
-      98,
-      109,
-      113,
-      131,
-      167,
+      128,
+      133,
       192
     ]
   },
-  "to": {
+  "e": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      56,
-      85,
-      102,
-      111,
-      188
+      77,
+      94,
+      107
     ]
   },
-  "trademark": {
+  "enhanc": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      157,
-      160
+      121
     ]
   },
-  "tree": {
+  "exampl": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      13
+      150
     ]
   },
-  "type": {
+  "field": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      73
+      20,
+      24,
+      29,
+      33
     ]
   },
-  "us": {
+  "for": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      168
+      122
     ]
   },
-  "usaal": {
+  "further": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      182
+      123
     ]
   },
-  "use": {
+  "handleabout": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      12,
-      185
+      91
     ]
   },
-  "version": {
-    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      153
-    ]
-  },
-  "void": {
+  "handleaboutaboutev": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
       76,
       93
     ]
   },
-  "when": {
+  "help": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      17
+    ]
+  },
+  "implement": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      47
+    ]
+  },
+  "in": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      165
+    ]
+  },
+  "index": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      16
+    ]
+  },
+  "interfac": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      41,
+      44
+    ]
+  },
+  "is": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      53,
+      82,
+      99,
+      154,
+      185
+    ]
+  },
+  "it": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      57,
+      86,
+      103,
+      163,
+      174
+    ]
+  },
+  "java": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      4,
+      131,
+      153
+    ]
+  },
+  "javaawtdesktop": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      40
+    ]
+  },
+  "javadesktop": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      38
+    ]
+  },
+  "jdk": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      6
+    ]
+  },
+  "licens": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      188
+    ]
+  },
+  "link": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      3
+    ]
+  },
+  "method": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      22,
+      26,
+      31,
+      35,
+      64,
+      69,
+      73,
+      89
+    ]
+  },
+  "methodsabstract": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      68
+    ]
+  },
+  "methodsinst": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      67
+    ]
+  },
+  "modifi": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      70
+    ]
+  },
+  "modul": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      8,
+      37
+    ]
+  },
+  "more": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      136
+    ]
+  },
+  "navig": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      2
+    ]
+  },
+  "nest": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      19,
+      28
+    ]
+  },
+  "new": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      14
+    ]
+  },
+  "notif": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      49
+    ]
+  },
+  "of": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      144,
+      160
+    ]
+  },
+  "or": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      118,
+      157
+    ]
+  },
+  "oracl": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      161,
+      172,
+      176
+    ]
+  },
+  "other": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      151,
+      169
+    ]
+  },
+  "overview": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      7,
+      142
+    ]
+  },
+  "packag": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      9,
+      39
+    ]
+  },
+  "paramet": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      106
+    ]
+  },
+  "parkway": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      177
+    ]
+  },
+  "polici": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      194
+    ]
+  },
+  "preview": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      13
+    ]
+  },
+  "public": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      43
+    ]
+  },
+  "receiv": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      48
+    ]
+  },
+  "redistribut": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      193
+    ]
+  },
+  "redwood": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      178
+    ]
+  },
+  "refer": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      125
+    ]
+  },
+  "regist": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      158
+    ]
+  },
+  "report": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      115
+    ]
+  },
+  "request": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      109
+    ]
+  },
+  "reserv": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      183
+    ]
+  },
+  "right": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      182
+    ]
+  },
+  "se": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      5,
+      132
+    ]
+  },
+  "search": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      36
+    ]
+  },
+  "see": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      61,
+      129
+    ]
+  },
+  "shore": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      179
+    ]
+  },
+  "show": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      56,
+      85,
+      102,
+      111
+    ]
+  },
+  "sinc": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      60
+    ]
+  },
+  "skip": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      1
+    ]
+  },
+  "subject": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      186
+    ]
+  },
+  "suggest": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      119
+    ]
+  },
+  "summari": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      18,
+      27,
+      65
+    ]
+  },
+  "term": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      145,
+      189
+    ]
+  },
+  "the": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
       51,
       80,
-      97
+      97,
+      108,
+      112,
+      130,
+      166,
+      191
+    ]
+  },
+  "to": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      55,
+      84,
+      101,
+      110,
+      187
+    ]
+  },
+  "trademark": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      156,
+      159
+    ]
+  },
+  "tree": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      12
+    ]
+  },
+  "type": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      72
+    ]
+  },
+  "us": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      167
+    ]
+  },
+  "usaal": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      181
+    ]
+  },
+  "use": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      11,
+      184
+    ]
+  },
+  "version": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      152
+    ]
+  },
+  "void": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      75,
+      92
+    ]
+  },
+  "when": {
+    "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
+      50,
+      79,
+      96
     ]
   },
   "which": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      135
+      134
     ]
   },
   "with": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      141
+      140
     ]
   },
   "work": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      149
+      148
     ]
   },
   "workaround": {
     "https://usf-cs272n-spring2025.github.io/project-web/docs/api/java.desktop/java/awt/desktop/AboutHandler.html": [
-      147
+      146
     ]
   }
 }
