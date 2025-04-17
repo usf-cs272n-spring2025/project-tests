@@ -488,7 +488,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		String[] args = {
 				TEXT.flag, input.text, QUERY.flag, queries.toString(),
 				RESULTS.flag, actual.toString(), partial ? PARTIAL.flag : "",
-				THREADS.flag, String.valueOf(threads)
+				THREADS.flag, threads.text
 		};
 
 		Executable debug = () -> checkOutput(args, actual, expected);
