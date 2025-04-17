@@ -34,6 +34,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 	 */
 	@Nested
 	@Order(1)
+	@Tag("time-v3.4")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class IndexBenchmarks {
 		/** Creates a new instance of this class. */
@@ -44,10 +45,8 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		@Tag("time-v3.3")
-		@Tag("time-v3.4")
-		public void okayIndexOneMany() {
-			timeIndexOneMany(MIN_SPEEDUP);
+		public void fastIndexOneMany() {
+			timeIndexOneMany(1.2);
 		}
 
 		/**
@@ -55,19 +54,8 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(2)
-		@Tag("time-v3.3")
-		public void goodIndexSingleMulti() {
-			timeIndexSingleMulti(MOD_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(3)
-		@Tag("time-v3.4")
 		public void fastSingleMulti() {
-			timeIndexSingleMulti(MAX_SPEEDUP);
+			timeIndexSingleMulti(1.2);
 		}
 	}
 
@@ -88,11 +76,23 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
+		@Tag("time-v3.1")
 		@Tag("time-v3.2")
 		@Tag("time-v3.3")
-		@Tag("time-v3.4")
 		public void okaySearchOneMany() {
-			timeSearchOneMany(MIN_SPEEDUP);
+			timeSearchOneMany(1.1);
+		}
+
+		/**
+		 * See the JUnit output for test details.
+		 */
+		@Test
+		@Order(2)
+		@Tag("time-v3.1")
+		@Tag("time-v3.2")
+		@Tag("time-v3.3")
+		public void okaySearchSingleMulti() {
+			timeSearchSingleMulti(0.9);
 		}
 
 		/**
@@ -100,10 +100,9 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(3)
-		@Tag("time-v3.1")
-		@Tag("time-v3.2")
-		public void okaySearchSingleMulti() {
-			timeSearchSingleMulti(MIN_SPEEDUP);
+		@Tag("time-v3.4")
+		public void goodSearchSingleMulti() {
+			timeSearchSingleMulti(1.2);
 		}
 
 		/**
@@ -111,16 +110,6 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(4)
-		@Tag("time-v3.3")
-		public void goodSearchSingleMulti() {
-			timeSearchSingleMulti(MOD_SPEEDUP);
-		}
-
-		/**
-		 * See the JUnit output for test details.
-		 */
-		@Test
-		@Order(5)
 		@Tag("time-v3.4")
 		@Tag("time-v4.0")
 		@Tag("time-v4.1")
@@ -128,7 +117,7 @@ public class ThreadTimedTests extends ProjectBenchmarks {
 		@Tag("time-v5.0")
 		@Tag("time-v5.1")
 		public void fastSearchSingleMulti() {
-			timeSearchSingleMulti(MAX_SPEEDUP);
+			timeSearchSingleMulti(1.2);
 		}
 	}
 }

@@ -354,6 +354,9 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 	 */
 	@Nested
 	@Order(5)
+	@Tag("time-v3.1")
+	@Tag("time-v3.2")
+	@Tag("time-v3.3")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ThreadTests {
 		/** Creates a new instance of this class. */
@@ -376,10 +379,8 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		@Tag("time-v3.1")
-		@Tag("time-v3.2")
 		public void okayIndexOneMany() {
-			timeIndexOneMany(MIN_SPEEDUP);
+			timeIndexOneMany(1.1);
 		}
 
 		/**
@@ -387,10 +388,8 @@ public class ThreadBuildTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(2)
-		@Tag("time-v3.1")
-		@Tag("time-v3.2")
 		public void okayIndexSingleMulti() {
-			timeIndexSingleMulti(MIN_SPEEDUP);
+			timeIndexSingleMulti(1.01);
 		}
 	}
 

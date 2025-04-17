@@ -372,6 +372,7 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 	 */
 	@Nested
 	@Order(4)
+	@Tag("time-v3.0")
 	@TestMethodOrder(OrderAnnotation.class)
 	public class ThreadTests {
 		/** Creates a new instance of this class. */
@@ -394,7 +395,6 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(1)
-		@Tag("time-v3.0")
 		public void okaySearchOneMany() {
 			// should be slightly faster
 			timeSearchOneMany(1.01);
@@ -405,7 +405,6 @@ public class ThreadSearchTests extends ProjectBenchmarks {
 		 */
 		@Test
 		@Order(2)
-		@Tag("time-v3.0")
 		public void slowSearchSingleMulti() {
 			// shouldn't be significantly slower
 			timeSearchSingleMulti(0.9);
